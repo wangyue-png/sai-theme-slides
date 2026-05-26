@@ -1,0 +1,2190 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sai Master Slides Templates</title>
+  <style>
+    @font-face {
+      font-family: "Manrope";
+      src: url("./assets/Manrope-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: 200 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ===========================================
+       VIEWPORT FITTING: MANDATORY BASE STYLES
+       Include this ENTIRE file in every presentation.
+       These styles ensure slides fit exactly in the viewport.
+       =========================================== */
+    html, body {
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    html {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+
+    .slide {
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .slide-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-height: 100%;
+        overflow: hidden;
+        padding: var(--slide-padding);
+    }
+
+    :root {
+        --title-size: clamp(1.5rem, 5vw, 4rem);
+        --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+        --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+        --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+        --small-size: clamp(0.65rem, 1vw, 0.875rem);
+        --slide-padding: clamp(1rem, 4vw, 4rem);
+        --content-gap: clamp(0.5rem, 2vw, 2rem);
+        --element-gap: clamp(0.25rem, 1vw, 1rem);
+    }
+
+    .card, .container, .content-box {
+        max-width: min(90vw, 1000px);
+        max-height: min(80vh, 700px);
+    }
+
+    .feature-list, .bullet-list {
+        gap: clamp(0.4rem, 1vh, 1rem);
+    }
+
+    .feature-list li, .bullet-list li {
+        font-size: var(--body-size);
+        line-height: 1.4;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+        gap: clamp(0.5rem, 1.5vw, 1rem);
+    }
+
+    img, .image-container {
+        max-width: 100%;
+        max-height: min(50vh, 400px);
+        object-fit: contain;
+    }
+
+    @media (max-height: 700px) {
+        :root {
+            --slide-padding: clamp(0.75rem, 3vw, 2rem);
+            --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+            --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+            --h2-size: clamp(1rem, 3vw, 1.75rem);
+        }
+    }
+
+    @media (max-height: 600px) {
+        :root {
+            --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+            --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+            --title-size: clamp(1.1rem, 4vw, 2rem);
+            --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+        }
+
+        .nav-dots, .keyboard-hint, .decorative {
+            display: none;
+        }
+    }
+
+    @media (max-height: 500px) {
+        :root {
+            --slide-padding: clamp(0.4rem, 2vw, 1rem);
+            --title-size: clamp(1rem, 3.5vw, 1.5rem);
+            --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+            --body-size: clamp(0.65rem, 1vw, 0.85rem);
+        }
+    }
+
+    @media (max-width: 600px) {
+        :root {
+            --title-size: clamp(1.25rem, 7vw, 2.5rem);
+        }
+
+        .grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.2s !important;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+    }
+
+    :root {
+      --bg: #f9faf5;
+      --bg2: #f5f6f1;
+      --bg3: #efefed;
+      --bgcard: #ffffff;
+      --b1: #e2e2df;
+      --b2: #d0d0cc;
+      --t1: #1a1a1e;
+      --t2: #3c3c44;
+      --t3: #6b6b73;
+      --t4: #94948f;
+      --as: #16D342;
+      --as2: #0FA635;
+      --gt: #0B8226;
+      --gs: rgba(22, 211, 66, 0.10);
+      --gg: rgba(22, 211, 66, 0.20);
+      --ab: #0c0c0c;
+      --abt: #fafafa;
+      --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-mono: "SF Mono", Menlo, Consolas, monospace;
+      --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--t1);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    .deck-track {
+      height: 100vh;
+      height: 100dvh;
+      transition: transform .72s var(--ease-out-strong);
+      will-change: transform;
+    }
+
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .slide-bg img,
+    .slide-bg video {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: cover;
+      opacity: .18;
+      filter: saturate(.92) contrast(1.03);
+    }
+
+    .slide > :not(.slide-bg) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .top-mark {
+      position: absolute;
+      top: clamp(1rem, 3vw, 2rem);
+      left: clamp(1rem, 3vw, 2rem);
+      z-index: var(--layer, 20);
+      display: flex;
+      align-items: center;
+      gap: clamp(.5rem, 1vw, .75rem);
+      font: 700 clamp(.75rem, 1vw, .95rem)/1 var(--font-sans);
+      letter-spacing: -.02em;
+    }
+
+    .top-mark img {
+      width: clamp(2rem, 4vw, 3.25rem);
+      height: clamp(2rem, 4vw, 3.25rem);
+      max-height: none;
+      border-radius: 14px;
+    }
+
+    .slide-kicker {
+      font: 600 clamp(.62rem, .9vw, .75rem)/1.4 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gt);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: clamp(3.4rem, 8vw, 7.25rem);
+      line-height: .9;
+      letter-spacing: -.055em;
+      font-weight: 760;
+    }
+    h2 {
+      font-size: clamp(2rem, 5.2vw, 4.6rem);
+      line-height: .96;
+      letter-spacing: -.052em;
+      font-weight: 760;
+    }
+    h3 {
+      font-size: clamp(1.1rem, 2vw, 1.65rem);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+      font-weight: 720;
+    }
+    p {
+      font-size: clamp(.88rem, 1.4vw, 1.2rem);
+      line-height: 1.5;
+      color: var(--t2);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, .72fr);
+      gap: clamp(1.4rem, 5vw, 5rem);
+      align-items: center;
+      padding-top: clamp(3rem, 8vh, 6rem);
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: clamp(1rem, 2vw, 1.4rem);
+      max-width: 58rem;
+    }
+
+    .hero-copy .lede { max-width: 39rem; }
+
+    .hero-art {
+      position: relative;
+      min-height: min(58vh, 34rem);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0d101a;
+      box-shadow: 0 28px 70px rgba(12, 12, 12, .14);
+      transform: rotate(-1deg);
+    }
+
+    .hero-art img,
+    .hero-art video {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      display: block;
+      filter: saturate(.95) contrast(1.03);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: clamp(.5rem, 1.5vw, 1rem);
+    }
+
+    .chip {
+      border: 1px solid var(--b1);
+      border-radius: 999px;
+      background: var(--bgcard);
+      padding: .55rem .8rem;
+      font: 600 clamp(.68rem, .95vw, .78rem)/1 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--t2);
+    }
+
+    .lime { color: var(--gt); }
+    .motion-in { opacity: 0; transform: translateY(22px); animation: rise .82s var(--ease-out-strong) forwards; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .32s; }
+    .delay-4 { animation-delay: .48s; }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(-1deg); }
+      50% { transform: translate3d(-1.2rem, .6rem, 0) rotate(1deg); }
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(22, 211, 66, .34); }
+      50% { box-shadow: 0 0 0 12px rgba(22, 211, 66, 0); }
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: clamp(1rem, 3vw, 3.5rem);
+      align-items: center;
+    }
+
+    .journey {
+      display: grid;
+      gap: clamp(.6rem, 1.2vh, .8rem);
+    }
+
+    .stage {
+      position: relative;
+      display: grid;
+      grid-template-columns: clamp(2.5rem, 4vw, 3.8rem) 1fr clamp(1.7rem, 2.4vw, 2.2rem);
+      gap: clamp(.7rem, 1.5vw, 1.2rem);
+      align-items: center;
+      background: var(--bgcard);
+      border: 1px solid var(--b1);
+      border-radius: 8px;
+      padding: clamp(.75rem, 1.4vw, 1.05rem);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .04);
+    }
+
+    .stage strong {
+      display: block;
+      font-size: clamp(.94rem, 1.25vw, 1.08rem);
+      letter-spacing: -.02em;
+    }
+
+    .stage span {
+      display: block;
+      margin-top: .18rem;
+      font-size: clamp(.72rem, 1vw, .86rem);
+      line-height: 1.4;
+      color: var(--t3);
+    }
+
+    .stage-num {
+      display: grid;
+      place-items: center;
+      width: clamp(2.35rem, 4vw, 3.25rem);
+      height: clamp(2.35rem, 4vw, 3.25rem);
+      border-radius: 8px;
+      background: var(--ab);
+      color: var(--abt);
+      font: 700 clamp(.78rem, 1vw, .92rem)/1 var(--font-mono);
+    }
+
+    .stage-icon {
+      width: clamp(1.35rem, 2vw, 1.8rem);
+      height: clamp(1.35rem, 2vw, 1.8rem);
+      opacity: .75;
+      justify-self: end;
+    }
+
+    .surface-panel {
+      min-height: min(56vh, 32rem);
+      border-radius: 16px;
+      border: 1px solid var(--b1);
+      background: linear-gradient(135deg, #ffffff 0%, #f6f7f1 48%, #eff2e9 100%);
+      padding: clamp(1rem, 2.5vw, 2rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .surface-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -8% -20% 28%;
+      height: 68%;
+      background: radial-gradient(circle, rgba(22,211,66,.18), transparent 64%);
+      pointer-events: none;
+    }
+
+    .placement-card {
+      position: absolute;
+      width: clamp(9.5rem, 20vw, 16rem);
+      min-height: clamp(5.8rem, 10vh, 7rem);
+      border: 1px solid var(--b1);
+      background: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: clamp(.7rem, 1.3vw, 1rem);
+      box-shadow: 0 22px 42px rgba(12, 12, 12, .08);
+      animation: floaty 6s var(--ease-in-out-strong) infinite;
+    }
+
+    .placement-card:nth-child(1) { left: 8%; top: 12%; animation-delay: -.5s; }
+    .placement-card:nth-child(2) { right: 10%; top: 22%; animation-delay: -2s; }
+    .placement-card:nth-child(3) { left: 24%; bottom: 13%; animation-delay: -3.3s; }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .placement-card b {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: clamp(.88rem, 1.2vw, 1.05rem);
+      letter-spacing: -.025em;
+      margin-bottom: .35rem;
+    }
+
+    .app-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      object-fit: contain;
+      max-height: none;
+      border-radius: 4px;
+      flex: 0 0 auto;
+    }
+
+    .placement-card small {
+      color: var(--t3);
+      line-height: 1.35;
+      font-size: clamp(.68rem, .95vw, .8rem);
+    }
+
+    .dot {
+      display: inline-block;
+      width: .55rem;
+      height: .55rem;
+      border-radius: 999px;
+      background: var(--as);
+      margin-right: .45rem;
+      animation: pulse-dot 1.8s infinite;
+    }
+
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(.8rem, 1.5vw, 1.2rem);
+      margin-top: clamp(1rem, 3vh, 2rem);
+    }
+
+    .channel {
+      min-height: min(43vh, 21rem);
+      border: 1px solid var(--b1);
+      border-radius: 10px;
+      background: var(--bgcard);
+      padding: clamp(1rem, 2vw, 1.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .channel.featured {
+      color: white;
+      background: #0c0c0c;
+      border-color: #0c0c0c;
+    }
+
+    .channel.featured p, .channel.featured .meta { color: #d4d4d4; }
+
+    .channel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .app-stack {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 2rem;
+    }
+
+    .app-stack img {
+      width: 1.75rem;
+      height: 1.75rem;
+      max-height: none;
+      object-fit: contain;
+      border-radius: 6px;
+      background: white;
+      border: 1px solid var(--b1);
+      padding: .18rem;
+      box-shadow: 0 8px 20px rgba(12,12,12,.08);
+    }
+
+    .featured .app-stack img {
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    }
+
+    .meta {
+      font: 600 clamp(.62rem, .8vw, .72rem)/1.4 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--t3);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font: 600 clamp(.62rem, .8vw, .72rem)/1.3 var(--font-sans);
+      white-space: nowrap;
+    }
+
+    .badge-running { background: var(--gs); color: var(--gt); }
+    .badge-dark { background: rgba(22,211,66,.15); color: var(--as); }
+    .badge-dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; animation: pd 1.4s ease-in-out infinite; }
+
+    @keyframes pd {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .42; transform: scale(.86); }
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: clamp(7rem, 14vw, 11rem) 1fr clamp(4.5rem, 8vw, 6rem);
+      gap: clamp(.6rem, 1.3vw, 1rem);
+      align-items: center;
+      margin-top: clamp(.5rem, 1.4vh, .85rem);
+    }
+
+    .bar-track {
+      height: clamp(1.2rem, 3vh, 2.05rem);
+      background: var(--bg3);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #0c0c0c;
+      transform-origin: left;
+      animation: grow 1.1s var(--ease-out-strong) both;
+    }
+
+    @keyframes grow {
+      from { transform: scaleX(.08); }
+      to { transform: scaleX(1); }
+    }
+
+    .operator {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(1rem, 3vw, 4rem);
+      align-items: center;
+    }
+
+    .sai-window {
+      background: #0c0c0c;
+      color: white;
+      border-radius: 16px;
+      border: 1px solid #202020;
+      box-shadow: 0 36px 86px rgba(12, 12, 12, .2);
+      min-height: min(58vh, 35rem);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .window-top {
+      height: 3rem;
+      border-bottom: 1px solid #202020;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      color: #a3a3a3;
+      font: 600 .72rem/1 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .log {
+      display: grid;
+      gap: .75rem;
+      padding: clamp(1rem, 2vw, 1.4rem);
+    }
+
+    .log-line {
+      display: grid;
+      grid-template-columns: 1rem 1fr;
+      gap: .65rem;
+      align-items: start;
+      font-size: clamp(.78rem, 1vw, .9rem);
+      color: #d4d4d4;
+      opacity: 0;
+      transform: translateX(-12px);
+      animation: row-in .68s var(--ease-out-strong) forwards;
+    }
+
+    .log-line:nth-child(2) { animation-delay: .15s; }
+    .log-line:nth-child(3) { animation-delay: .3s; }
+    .log-line:nth-child(4) { animation-delay: .45s; }
+    .log-line:nth-child(5) { animation-delay: .6s; }
+
+    @keyframes row-in {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .workspace-slide {
+      background: #090a09;
+      color: #f6f7f1;
+    }
+
+    .workspace-stage {
+      position: relative;
+      width: min(86vw, 76rem);
+      min-height: min(72vh, 43rem);
+      margin: auto;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      background: #0a0b0a;
+      overflow: hidden;
+      box-shadow: 0 36px 96px rgba(0,0,0,.42);
+    }
+
+    .workspace-stage::before {
+      content: "";
+      position: absolute;
+      inset: 12% -8% -18% 70%;
+      background: radial-gradient(circle, rgba(22,211,66,.16), transparent 58%);
+      pointer-events: none;
+    }
+
+    .workspace-head {
+      height: clamp(3.4rem, 7vh, 5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.2rem, 2.4vw, 2rem);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      color: #a6a6aa;
+      font: 700 clamp(.8rem, 1.15vw, 1rem)/1 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .workspace-body {
+      display: grid;
+      gap: clamp(.8rem, 1.6vh, 1.2rem);
+      padding: clamp(1.4rem, 4vw, 3rem);
+    }
+
+    .workspace-row {
+      display: grid;
+      grid-template-columns: clamp(1.8rem, 3vw, 2.4rem) 1fr;
+      gap: clamp(.8rem, 1.8vw, 1.4rem);
+      align-items: center;
+      color: #d4d4d8;
+      font-size: clamp(1.1rem, 2.1vw, 1.75rem);
+      line-height: 1.25;
+      opacity: 0;
+      transform: translateX(-10px);
+      animation: row-in .56s var(--ease-out-strong) forwards;
+    }
+
+    .workspace-row:nth-child(2) { animation-delay: .12s; }
+    .workspace-row:nth-child(3) { animation-delay: .24s; }
+    .workspace-row:nth-child(4) { animation-delay: .36s; }
+    .workspace-row:nth-child(5) { animation-delay: .48s; }
+
+    .workspace-dot {
+      width: clamp(1.35rem, 2vw, 1.7rem);
+      height: clamp(1.35rem, 2vw, 1.7rem);
+      border-radius: 999px;
+      background: rgba(22,211,66,.12);
+      display: grid;
+      place-items: center;
+    }
+
+    .workspace-dot::after {
+      content: "";
+      width: .56rem;
+      height: .56rem;
+      border-radius: inherit;
+      background: var(--as);
+      animation: pd 1.4s ease-in-out infinite;
+    }
+
+    .ascii-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(20rem, 1.15fr);
+      gap: clamp(1rem, 4vw, 4rem);
+      align-items: center;
+    }
+
+    .ascii-panel {
+      min-height: min(60vh, 35rem);
+      border: 1px solid var(--b1);
+      border-radius: 16px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(12,12,12,.1);
+    }
+
+    .ascii-panel img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.08);
+    }
+
+    .desktop-mock {
+      display: grid;
+      grid-template-rows: 2.6rem 1fr 2.4rem;
+      min-height: min(58vh, 34rem);
+      border-radius: 16px;
+      background: #111410;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(12,12,12,.18);
+    }
+
+    .desktop-chrome {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: 0 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.65);
+      font: 600 .75rem/1 var(--font-mono);
+    }
+
+    .traffic {
+      display: flex;
+      gap: .38rem;
+    }
+
+    .traffic i {
+      width: .68rem;
+      height: .68rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.2);
+    }
+
+    .desktop-canvas {
+      position: relative;
+      padding: clamp(1rem, 2vw, 1.4rem);
+      background: linear-gradient(135deg, #dce3d9, #c4ccbf);
+    }
+
+    .desktop-card {
+      width: 72%;
+      height: 72%;
+      border-radius: 10px;
+      background: #fafaf8;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 18px 46px rgba(0,0,0,.18);
+      padding: 1rem;
+      display: grid;
+      gap: .65rem;
+    }
+
+    .desktop-line {
+      min-height: 1.45rem;
+      border-radius: 999px;
+      background: #d6d8d2;
+      display: flex;
+      align-items: center;
+      padding: 0 .75rem;
+      color: rgba(12,12,12,.52);
+      font: 700 clamp(.56rem, .76vw, .68rem)/1 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .desktop-line.hot {
+      background: rgba(22,211,66,.26);
+      outline: 2px solid var(--as);
+      outline-offset: 2px;
+    }
+
+    .desktop-cursor {
+      position: absolute;
+      right: 18%;
+      top: 38%;
+      width: 2rem;
+      height: 2rem;
+      border: 2px solid var(--as);
+      border-radius: 999px;
+      box-shadow: 0 0 0 .5rem rgba(22,211,66,.18);
+      animation: pd 1.4s ease-in-out infinite;
+    }
+
+    .desktop-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.7);
+      font: 600 .68rem/1 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1rem, 2vw, 1.5rem);
+      margin-top: clamp(1rem, 3vh, 2rem);
+    }
+
+    .compare-card {
+      min-height: min(44vh, 26rem);
+      border: 1px solid var(--b1);
+      border-radius: 12px;
+      background: var(--bgcard);
+      padding: clamp(1rem, 2vw, 1.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .compare-card.dark {
+      background: #0c0c0c;
+      color: #fff;
+      border-color: #202020;
+    }
+
+    .compare-card.dark p, .compare-card.dark .meta { color: #d4d4d4; }
+
+    .quote-marketing {
+      display: grid;
+      gap: clamp(1rem, 2vw, 1.4rem);
+      max-width: 70rem;
+    }
+
+    .quote-text {
+      font-size: clamp(2.2rem, 5vw, 5rem);
+      line-height: .98;
+      letter-spacing: -.05em;
+      font-weight: 760;
+    }
+
+    .text-motion-rise { animation: text-rise .72s var(--ease-out-strong) both; }
+    .text-motion-type {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid currentColor;
+      animation: type-text 1.2s steps(24, end) both, blink-caret .8s steps(2) infinite;
+    }
+    .text-motion-step { animation: row-in .58s var(--ease-out-strong) both; }
+    .text-motion-pulse { animation: text-pulse 1.6s ease-in-out infinite; }
+
+    @keyframes text-rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes type-text {
+      from { max-width: 0; }
+      to { max-width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      0%, 49% { border-color: currentColor; }
+      50%, 100% { border-color: transparent; }
+    }
+
+    @keyframes text-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .48; }
+    }
+
+    .log-line i {
+      width: .5rem;
+      height: .5rem;
+      border-radius: 999px;
+      background: var(--as);
+      margin-top: .38rem;
+      box-shadow: 0 0 0 6px rgba(22,211,66,.1);
+    }
+
+    .closing {
+      background: #0c0c0c;
+      color: #fafafa;
+    }
+
+    .closing .slide-content {
+      display: grid;
+      grid-template-columns: 1fr .78fr;
+      gap: clamp(1rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    .closing p { color: #d4d4d4; max-width: 42rem; }
+    .closing-art {
+      width: 100%;
+      height: min(64vh, 38rem);
+      max-height: none;
+      border-radius: 16px;
+      object-fit: cover;
+      opacity: .72;
+      filter: grayscale(.12) contrast(1.08);
+      animation: drift 12s ease-in-out infinite;
+    }
+
+    .cta {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: .65rem;
+      margin-top: clamp(1rem, 3vh, 2rem);
+      padding: .85rem 1.1rem;
+      border-radius: 8px;
+      background: #fafafa;
+      color: #0c0c0c;
+      font-weight: 700;
+      font-size: clamp(.8rem, 1vw, .95rem);
+    }
+
+    .progress {
+      position: fixed;
+      z-index: 20;
+      right: clamp(.8rem, 2vw, 1.25rem);
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      gap: .45rem;
+    }
+
+    .progress a {
+      display: block;
+      width: .45rem;
+      height: .45rem;
+      border-radius: 999px;
+      background: rgba(106, 106, 115, .32);
+      border: 1px solid rgba(255,255,255,.36);
+    }
+
+    .progress a:hover { background: var(--as); }
+
+    .edit-toolbar {
+      position: fixed;
+      z-index: 30;
+      left: 50%;
+      bottom: clamp(.8rem, 2vw, 1.25rem);
+      transform: translateX(-50%);
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      width: min(96vw, 96rem);
+      justify-content: center;
+      padding: .45rem .7rem;
+      border: 1px solid var(--b1);
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 50px rgba(12,12,12,.1);
+    }
+
+    .edit-toolbar button {
+      border: 0;
+      border-radius: 999px;
+      padding: .58rem .85rem;
+      background: transparent;
+      color: var(--t2);
+      font: 700 clamp(.68rem, .85vw, .8rem)/1 var(--font-sans);
+      cursor: pointer;
+      min-width: max-content;
+      white-space: nowrap;
+    }
+
+    .edit-toolbar select {
+      border: 0;
+      border-radius: 999px;
+      padding: .58rem 1.8rem .58rem .85rem;
+      background: transparent;
+      color: var(--t2);
+      font: 700 clamp(.68rem, .85vw, .8rem)/1 var(--font-sans);
+      cursor: pointer;
+      min-width: max-content;
+      max-width: 13rem;
+      white-space: nowrap;
+    }
+
+    .edit-toolbar button.active,
+    .edit-toolbar button:hover,
+    .edit-toolbar select:hover {
+      background: var(--ab);
+      color: var(--abt);
+    }
+
+    .media-sidebar {
+      position: fixed;
+      z-index: 35;
+      right: clamp(.8rem, 2vw, 1.25rem);
+      top: clamp(.8rem, 2vw, 1.25rem);
+      bottom: clamp(5.5rem, 10vh, 7rem);
+      width: min(22rem, calc(100vw - 2rem));
+      display: none;
+      grid-template-rows: auto auto 1fr;
+      gap: .75rem;
+      padding: .85rem;
+      border: 1px solid var(--b1);
+      border-radius: 16px;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 70px rgba(12,12,12,.14);
+    }
+
+    .media-sidebar.open {
+      display: grid;
+    }
+
+    .media-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      font: 800 .78rem/1 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--t2);
+    }
+
+    .media-actions {
+      display: flex;
+      gap: .4rem;
+      align-items: center;
+    }
+
+    .media-actions button,
+    .media-empty button {
+      border: 0;
+      border-radius: 999px;
+      padding: .55rem .75rem;
+      background: var(--ab);
+      color: var(--abt);
+      font: 700 .72rem/1 var(--font-sans);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .media-actions button.secondary {
+      background: transparent;
+      color: var(--t2);
+      border: 1px solid var(--b1);
+    }
+
+    .media-drop {
+      display: grid;
+      place-items: center;
+      min-height: 4.8rem;
+      border: 1px dashed rgba(22,211,66,.55);
+      border-radius: 12px;
+      background: rgba(22,211,66,.06);
+      color: var(--t3);
+      text-align: center;
+      padding: .8rem;
+      font: 700 .76rem/1.35 var(--font-sans);
+    }
+
+    .media-drop.dragging {
+      background: rgba(22,211,66,.14);
+      color: var(--gt);
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .65rem;
+      overflow: auto;
+      padding-right: .15rem;
+    }
+
+    .media-empty {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: .7rem;
+      align-content: center;
+      min-height: 12rem;
+      color: var(--t3);
+      text-align: center;
+      font: 600 .82rem/1.45 var(--font-sans);
+    }
+
+    .media-card {
+      display: grid;
+      gap: .45rem;
+      min-width: 0;
+    }
+
+    .media-thumb {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      border: 1px solid var(--b1);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg3);
+      cursor: pointer;
+    }
+
+    .media-thumb img,
+    .media-thumb video {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media-kind {
+      position: absolute;
+      left: .35rem;
+      top: .35rem;
+      padding: .22rem .42rem;
+      border-radius: 999px;
+      background: rgba(12,12,12,.72);
+      color: white;
+      font: 800 .56rem/1 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .media-name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: var(--t2);
+      font: 700 .68rem/1.2 var(--font-sans);
+    }
+
+    .media-card button {
+      border: 1px solid var(--b1);
+      border-radius: 999px;
+      padding: .45rem .55rem;
+      background: white;
+      color: var(--t2);
+      font: 800 .64rem/1 var(--font-sans);
+      cursor: pointer;
+    }
+
+    [data-editable] {
+      position: relative;
+      z-index: var(--layer, 20);
+      border-radius: 6px;
+      outline: 0 solid transparent;
+    }
+
+    body.editing [data-editable] {
+      cursor: text;
+      outline: 1px dashed rgba(22, 211, 66, .55);
+      outline-offset: 4px;
+    }
+
+    body.editing [data-editable]:focus {
+      outline: 2px solid var(--as);
+      background: rgba(22, 211, 66, .07);
+    }
+
+    body.editing .layer-selected {
+      outline: 2px solid var(--as) !important;
+      outline-offset: 6px;
+      box-shadow: 0 0 0 4px rgba(22, 211, 66, .11);
+    }
+
+    body.editing [data-image-frame] {
+      position: relative;
+      z-index: var(--layer, 10);
+      cursor: pointer;
+      outline: 1px dashed rgba(22, 211, 66, .45);
+      outline-offset: 5px;
+    }
+
+    [data-image-frame] {
+      position: relative;
+      z-index: var(--layer, 10);
+    }
+
+    .user-asset {
+      position: absolute;
+      z-index: var(--layer, 30);
+      left: 12%;
+      top: 22%;
+      width: min(34vw, 24rem);
+      aspect-ratio: 16 / 10;
+      min-width: 5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 18px 50px rgba(12,12,12,.16);
+      cursor: grab;
+      user-select: none;
+    }
+
+    .user-asset img,
+    .user-asset video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .resize-handle {
+      position: absolute;
+      right: -.45rem;
+      bottom: -.45rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 999px;
+      background: var(--as);
+      border: 2px solid white;
+      box-shadow: 0 8px 18px rgba(12,12,12,.2);
+      cursor: nwse-resize;
+    }
+
+    body:not(.editing) .resize-handle {
+      display: none;
+    }
+
+    body.editing .user-asset {
+      outline: 1px dashed rgba(22,211,66,.65);
+      outline-offset: 5px;
+    }
+
+    body.transition-fade .deck-track,
+    body.transition-zoom .deck-track,
+    body.transition-rise .deck-track,
+    body.transition-wipe .deck-track,
+    body.transition-stack .deck-track {
+      transform: none !important;
+      transition: none;
+      position: relative;
+      height: 100vh;
+      height: 100dvh;
+    }
+
+    body.transition-fade .slide,
+    body.transition-zoom .slide,
+    body.transition-rise .slide,
+    body.transition-wipe .slide,
+    body.transition-stack .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .58s var(--ease-out-strong), transform .58s var(--ease-out-strong), clip-path .72s var(--ease-out-strong);
+    }
+
+    body.transition-fade .slide.is-active,
+    body.transition-zoom .slide.is-active,
+    body.transition-rise .slide.is-active,
+    body.transition-wipe .slide.is-active,
+    body.transition-stack .slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    body.transition-zoom .slide {
+      transform: scale(.965);
+    }
+
+    body.transition-zoom .slide.is-active {
+      transform: scale(1);
+    }
+
+    body.transition-rise .slide {
+      transform: translateY(2.5rem) scale(.99);
+    }
+
+    body.transition-rise .slide.is-active {
+      transform: translateY(0) scale(1);
+    }
+
+    body.transition-wipe .slide {
+      clip-path: inset(0 0 0 100%);
+    }
+
+    body.transition-wipe .slide.is-active {
+      clip-path: inset(0);
+    }
+
+    body.transition-stack .slide {
+      transform: translate3d(0, 7vh, 0) rotateX(4deg);
+      transform-origin: 50% 10%;
+    }
+
+    body.transition-stack .slide.is-active {
+      transform: translate3d(0, 0, 0) rotateX(0);
+    }
+
+    @media (max-width: 880px) {
+      .hero, .map-grid, .operator, .closing .slide-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art, .closing-art {
+        min-height: 26vh;
+        height: 26vh;
+      }
+
+      .channel-grid, .compare-grid, .ascii-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .channel {
+        min-height: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="progress nav-dots" aria-label="Slide navigation">
+    <a href="#s1" aria-label="Slide 1"></a>
+    <a href="#s2" aria-label="Slide 2"></a>
+    <a href="#s3" aria-label="Slide 3"></a>
+    <a href="#s4" aria-label="Slide 4"></a>
+    <a href="#s5" aria-label="Slide 5"></a>
+    <a href="#s6" aria-label="Slide 6"></a>
+  </nav>
+  <div class="edit-toolbar" aria-label="Editing controls">
+    <button id="editToggle" type="button">Edit text</button>
+    <button id="imageButton" type="button">Image</button>
+    <button id="mediaToggle" type="button">Media</button>
+    <select id="imageActionSelect" aria-label="Image options">
+      <option value="">Image options</option>
+      <option value="replace">Replace</option>
+      <option value="forward">Layer up</option>
+      <option value="backward">Layer down</option>
+      <option value="front">To front</option>
+      <option value="back">To back</option>
+      <option value="contain">Fit</option>
+      <option value="cover">Fill</option>
+      <option value="background">As background</option>
+      <option value="delete">Delete image</option>
+    </select>
+    <button id="deleteSlide" type="button">Delete slide</button>
+    <select id="templateSelect" aria-label="Add slide template">
+      <option value="">Add slide</option>
+      <option value="title">Title</option>
+      <option value="cards">3 cards</option>
+      <option value="proof">Proof</option>
+      <option value="dark">Dark close</option>
+      <option value="workspace">Workspace log</option>
+      <option value="ascii">ASCII brand</option>
+      <option value="desktop">Desktop UI</option>
+      <option value="comparison">Comparison</option>
+      <option value="quote">Quote</option>
+      <option value="metrics">Metrics</option>
+    </select>
+    <select id="textAnimSelect" aria-label="Text animation">
+      <option value="">Text motion</option>
+      <option value="none">None</option>
+      <option value="rise">Rise</option>
+      <option value="type">Type</option>
+      <option value="step">Step log</option>
+      <option value="pulse">Pulse</option>
+    </select>
+    <select id="transitionSelect" aria-label="Animate slides">
+      <option value="">Animate</option>
+      <option value="slide">Slide</option>
+      <option value="fade">Fade</option>
+      <option value="zoom">Zoom</option>
+      <option value="rise">Rise</option>
+      <option value="wipe">Wipe</option>
+      <option value="stack">Stack</option>
+    </select>
+    <button id="saveDeck" type="button">Save</button>
+    <button id="exportDeck" type="button">Export HTML</button>
+  </div>
+  <input id="imageInput" type="file" accept="image/*,video/*" hidden>
+  <input id="mediaInput" type="file" accept="image/*,video/*" multiple hidden>
+
+  <aside class="media-sidebar" id="mediaSidebar" aria-label="Media library">
+    <div class="media-head">
+      <span>Media library</span>
+      <div class="media-actions">
+        <button id="mediaUpload" type="button">Upload</button>
+        <button id="mediaClose" class="secondary" type="button">Close</button>
+      </div>
+    </div>
+    <div class="media-drop" id="mediaDrop">Drop images or videos here<br>then choose a slide background.</div>
+    <div class="media-grid" id="mediaGrid"></div>
+  </aside>
+
+  <main class="deck-track" id="deckTrack">
+  <section id="s1" class="slide" data-slide-index="0">
+    <div class="top-mark motion-in"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Sai master slides</span></div>
+    <div class="slide-content hero">
+      <div class="hero-copy">
+        <div class="slide-kicker motion-in delay-1" data-editable>Sai master slides templates</div>
+        <h1 class="motion-in delay-2" data-editable>Sai master slides templates.</h1>
+        <p class="lede motion-in delay-3" data-editable>A flexible editable deck system for Sai product stories, UI demos, brand assets, and motion-ready slide layouts.</p>
+        <div class="chip-row motion-in delay-4">
+          <span class="chip">CRM</span>
+          <span class="chip">Inbox</span>
+          <span class="chip">Browser workspace</span>
+          <span class="chip">Recurring tasks</span>
+        </div>
+      </div>
+      <figure class="hero-art motion-in delay-3" data-image-frame>
+        <img src="./assets/ascii-art-wide.png" alt="Sai ASCII brand artwork">
+      </figure>
+    </div>
+  </section>
+
+  <section id="s2" class="slide" data-slide-index="1">
+    <div class="top-mark"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Intent map</span></div>
+    <div class="slide-content map-grid">
+      <div class="hero-copy">
+        <div class="slide-kicker motion-in" data-editable>Core idea</div>
+        <h2 class="motion-in delay-1" data-editable>Win the handoff from intent to action.</h2>
+        <p class="motion-in delay-2" data-editable>The best placement appears after the user has a real job to do, but before they start the repetitive steps themselves.</p>
+      </div>
+      <div class="journey">
+        <div class="stage motion-in delay-1"><div class="stage-num">01</div><div><strong data-editable>Task appears</strong><span data-editable>A meeting, lead, inbox thread, or research need creates urgency.</span></div><img class="stage-icon" src="./assets/icons/bolt.svg" alt=""></div>
+        <div class="stage motion-in delay-2"><div class="stage-num">02</div><div><strong data-editable>Trust is visible</strong><span data-editable>Sai shows scope, credentials boundary, and what it will do.</span></div><img class="stage-icon" src="./assets/icons/shield.svg" alt=""></div>
+        <div class="stage motion-in delay-3"><div class="stage-num">03</div><div><strong data-editable>Workspace starts</strong><span data-editable>The coworker does the work in a private, observable desktop.</span></div><img class="stage-icon" src="./assets/icons/clock.svg" alt=""></div>
+        <div class="stage motion-in delay-4"><div class="stage-num">04</div><div><strong data-editable>Habit forms</strong><span data-editable>The one-time task becomes a recurring job that runs without prompting.</span></div><img class="stage-icon" src="./assets/icons/repeat.svg" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s3" class="slide" data-slide-index="2">
+    <div class="top-mark"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Surfaces</span></div>
+    <div class="slide-content map-grid">
+      <div class="surface-panel motion-in">
+        <div class="placement-card"><b data-editable><img class="app-icon" src="./assets/integrations/salesforce.svg" alt="">CRM</b><small data-editable>Research account, enrich contacts, prepare next step.</small></div>
+        <div class="placement-card"><b data-editable><img class="app-icon" src="./assets/integrations/gmail.svg" alt="">Inbox</b><small data-editable>Triage unread threads, draft replies, prep calendar context.</small></div>
+        <div class="placement-card"><b data-editable><span class="dot"></span>Browser</b><small data-editable>Monitor pages, extract data, turn browsing into artifacts.</small></div>
+      </div>
+      <div class="hero-copy">
+        <div class="slide-kicker motion-in delay-1" data-editable>Priority wedge</div>
+        <h2 class="motion-in delay-2" data-editable>Start with CRM and prospecting.</h2>
+        <p class="motion-in delay-3" data-editable>It has clear buyer pain, visible ROI, and a natural path from one task to daily recurrence. Browser workspace demos create demand; CRM converts it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="s4" class="slide" data-slide-index="3">
+    <div class="top-mark"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Channel test</span></div>
+    <div class="slide-content">
+      <div class="slide-kicker motion-in" data-editable>Three tests</div>
+      <h2 class="motion-in delay-1" data-editable>Each channel needs a different proof object.</h2>
+      <div class="channel-grid">
+        <article class="channel motion-in delay-1">
+          <div class="channel-head"><div><div class="meta" data-editable>Fast activation</div><h3 data-editable>Browser workspace</h3></div><div class="app-stack"><img src="./assets/icons/bolt.svg" alt=""></div></div>
+          <p data-editable>Public demo motion. Show Sai operating software in real time, then convert viewers into starter tasks.</p>
+          <span class="meta" data-editable>Proof: live artifact</span>
+        </article>
+        <article class="channel featured motion-in delay-2">
+          <div class="channel-head"><div><div class="meta" data-editable>Paid pilot</div><h3 data-editable>CRM + prospecting</h3></div><div class="app-stack"><img src="./assets/integrations/salesforce.svg" alt=""></div></div>
+          <p data-editable>Sales and investing teams feel the manual work immediately. This is the best placement for budget conversations.</p>
+          <span class="meta" data-editable>Proof: account brief</span>
+        </article>
+        <article class="channel motion-in delay-3">
+          <div class="channel-head"><div><div class="meta" data-editable>Daily habit</div><h3 data-editable>Inbox + calendar</h3></div><div class="app-stack"><img src="./assets/integrations/gmail.svg" alt=""></div></div>
+          <p data-editable>Strong retention surface once trust is earned. Keep first-run scope tight and visible.</p>
+          <span class="meta" data-editable>Proof: morning prep</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="s5" class="slide" data-slide-index="4">
+    <div class="top-mark"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Measurement</span></div>
+    <div class="slide-content">
+      <div class="slide-kicker motion-in" data-editable>North star</div>
+      <h2 class="motion-in delay-1" data-editable>Measure habit, not impressions.</h2>
+      <p class="motion-in delay-2" style="max-width: 44rem;" data-editable>A placement surface is working when it turns one-off tasks into recurring work.</p>
+      <div style="margin-top: clamp(1.2rem, 4vh, 2.5rem); max-width: 64rem;">
+        <div class="metric-row motion-in delay-1"><span class="meta" data-editable>Surface view</span><div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div><span class="meta" data-editable>100%</span></div>
+        <div class="metric-row motion-in delay-2"><span class="meta" data-editable>Task start</span><div class="bar-track"><div class="bar-fill" style="width: 72%;"></div></div><span class="meta" data-editable>72%</span></div>
+        <div class="metric-row motion-in delay-3"><span class="meta" data-editable>Task done</span><div class="bar-track"><div class="bar-fill" style="width: 56%;"></div></div><span class="meta" data-editable>56%</span></div>
+        <div class="metric-row motion-in delay-4"><span class="meta" data-editable>Recurring</span><div class="bar-track"><div class="bar-fill" style="width: 38%; background: var(--as);"></div></div><span class="meta" data-editable>38%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s6" class="slide closing" data-slide-index="5">
+    <div class="top-mark"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Next steps</span></div>
+    <div class="slide-content">
+      <div class="hero-copy">
+        <div class="slide-kicker motion-in" data-editable>14-day plan</div>
+        <h2 class="motion-in delay-1" data-editable>Package placement as a repeatable task loop.</h2>
+        <p class="motion-in delay-2" data-editable>Pick the CRM wedge, ship three starter tasks, instrument the recurrence loop, and turn every completed task into a shareable artifact.</p>
+        <div class="cta motion-in delay-3">◆ Powered by Sai</div>
+      </div>
+      <div class="sai-window motion-in delay-2">
+        <div class="window-top"><span data-editable>Sai workspace</span><span class="badge badge-dark"><i class="badge-dot"></i><span data-editable>Running</span></span></div>
+        <div class="log">
+          <div class="log-line"><i></i><span data-editable>Opened Salesforce account list.</span></div>
+          <div class="log-line"><i></i><span data-editable>Researched five priority prospects.</span></div>
+          <div class="log-line"><i></i><span data-editable>Generated account briefs with source links.</span></div>
+          <div class="log-line"><i></i><span data-editable>Suggested daily recurrence at 8:30 AM.</span></div>
+          <div class="log-line"><i></i><span data-editable>Ready for approval before outreach.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <script>
+    const STORAGE_KEY = "sai-placement-motion-editor-v3";
+    const track = document.getElementById("deckTrack");
+    const progress = document.querySelector(".progress");
+    const editToggle = document.getElementById("editToggle");
+    const imageButton = document.getElementById("imageButton");
+    const mediaToggle = document.getElementById("mediaToggle");
+    const imageActionSelect = document.getElementById("imageActionSelect");
+    const imageInput = document.getElementById("imageInput");
+    const mediaInput = document.getElementById("mediaInput");
+    const mediaSidebar = document.getElementById("mediaSidebar");
+    const mediaUpload = document.getElementById("mediaUpload");
+    const mediaClose = document.getElementById("mediaClose");
+    const mediaDrop = document.getElementById("mediaDrop");
+    const mediaGrid = document.getElementById("mediaGrid");
+    const deleteSlideButton = document.getElementById("deleteSlide");
+    const templateSelect = document.getElementById("templateSelect");
+    const textAnimSelect = document.getElementById("textAnimSelect");
+    const transitionSelect = document.getElementById("transitionSelect");
+    const saveDeck = document.getElementById("saveDeck");
+    const exportDeck = document.getElementById("exportDeck");
+    const defaultMediaItems = [
+      { name: "hero-stones-bg.webp", type: "image", src: "./assets/media/hero-stones-bg.webp" },
+      { name: "beach.png", type: "image", src: "./assets/media/beach.png" },
+      { name: "mountains.png", type: "image", src: "./assets/media/mountains.png" },
+      { name: "cold-mountain.png", type: "image", src: "./assets/media/cold-mountain.png" },
+      { name: "peak.png", type: "image", src: "./assets/media/peak.png" },
+      { name: "woods.png", type: "image", src: "./assets/media/woods.png" },
+    ];
+    let slides = [];
+    let editableNodes = [];
+    let active = 0;
+    let transitionMode = "slide";
+    let selectedLayerNode = null;
+    let selectedImageTarget = null;
+    let selectedTextNode = null;
+    let mediaItems = [...defaultMediaItems];
+    const layerBoundNodes = new WeakSet();
+    const assetBoundNodes = new WeakSet();
+    const imageFrameBoundNodes = new WeakSet();
+
+    function refreshCollections() {
+      document.querySelectorAll(".visual-3d").forEach((node) => node.remove());
+      document.querySelectorAll(".hero-art").forEach((frame) => {
+        frame.dataset.imageFrame = "";
+      });
+      document.querySelectorAll(".desktop-line").forEach((line, index) => {
+        line.dataset.editable = "";
+        if (!line.textContent.trim()) {
+          line.textContent = ["Workspace target", "Sai active step", "Output preview", "Approval note"][index % 4];
+        }
+      });
+      document.querySelectorAll(".desktop-cursor").forEach((cursor) => {
+        cursor.dataset.imageFrame = "";
+        cursor.setAttribute("aria-label", "Editable cursor highlight");
+      });
+      const firstTop = track.querySelector(".slide:first-child .top-mark span[data-editable]");
+      if (firstTop?.textContent.trim() === "Sai placement") firstTop.textContent = "Sai master slides";
+      const firstKicker = track.querySelector(".slide:first-child .slide-kicker[data-editable]");
+      if (firstKicker?.textContent.trim() === "Placement strategy") firstKicker.textContent = "Sai master slides templates";
+      const firstTitle = track.querySelector(".slide:first-child h1[data-editable]");
+      if (firstTitle?.textContent.trim() === "Put Sai where work starts.") firstTitle.textContent = "Sai master slides templates.";
+      const firstLede = track.querySelector(".slide:first-child .lede[data-editable]");
+      if (firstLede?.textContent.trim().startsWith("Placement is not a distribution slot.")) {
+        firstLede.textContent = "A flexible editable deck system for Sai product stories, UI demos, brand assets, and motion-ready slide layouts.";
+      }
+      const coverImage = track.querySelector(".slide:first-child .hero-art[data-image-frame] img");
+      if (coverImage?.getAttribute("src") === "./assets/2049.svg") {
+        coverImage.src = "./assets/ascii-art-wide.png";
+        coverImage.alt = "Sai ASCII brand artwork";
+      }
+      slides = Array.from(document.querySelectorAll(".slide"));
+      editableNodes = Array.from(document.querySelectorAll("[data-editable]"));
+      editableNodes.forEach((node, index) => {
+        node.dataset.editId = node.dataset.editId || `edit-${index}`;
+        node.setAttribute("spellcheck", "true");
+        node.setAttribute("contenteditable", document.body.classList.contains("editing") ? "true" : "false");
+        node.addEventListener("input", markDirty, { once: true });
+        if (!layerBoundNodes.has(node)) {
+          layerBoundNodes.add(node);
+          node.addEventListener("pointerdown", () => selectLayer(node));
+          node.addEventListener("focus", () => selectLayer(node));
+        }
+      });
+      progress.innerHTML = slides.map((_, i) => `<a href="#s${i + 1}" aria-label="Slide ${i + 1}"></a>`).join("");
+      progress.querySelectorAll("a").forEach((link, index) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          goToSlide(index);
+        });
+      });
+      slides.forEach((slide, index) => {
+        slide.id = `s${index + 1}`;
+        slide.dataset.slideIndex = String(index);
+      });
+      attachAssetBehavior();
+      attachImageFrameBehavior();
+    }
+
+    function markDirty() {
+      saveDeck.textContent = "Save*";
+    }
+
+    function getLayerTarget(node) {
+      return node?.closest?.(".top-mark") || node;
+    }
+
+    function layerValue(node) {
+      const target = getLayerTarget(node);
+      const inlineLayer = Number.parseInt(target?.style.getPropertyValue("--layer") || "", 10);
+      if (Number.isFinite(inlineLayer)) return inlineLayer;
+      const computed = Number.parseInt(window.getComputedStyle(target).zIndex, 10);
+      return Number.isFinite(computed) ? computed : (target?.classList.contains("user-asset") ? 30 : target?.matches?.("[data-image-frame]") ? 10 : 20);
+    }
+
+    function setLayer(node, value) {
+      const target = getLayerTarget(node);
+      target.style.setProperty("--layer", String(Math.max(1, Math.min(99, value))));
+    }
+
+    function selectLayer(node) {
+      if (!document.body.classList.contains("editing")) return;
+      const layerNode = node?.closest?.(".user-asset") || node?.closest?.("[data-editable]");
+      if (!layerNode) return;
+      if (selectedLayerNode) {
+        selectedLayerNode.classList.remove("layer-selected");
+        getLayerTarget(selectedLayerNode).classList.remove("layer-selected");
+      }
+      selectedLayerNode = layerNode;
+      getLayerTarget(layerNode).classList.add("layer-selected");
+      if (layerNode.matches?.("[data-editable]")) selectedTextNode = layerNode;
+      if (layerNode.classList.contains("user-asset")) {
+        selectedImageTarget = layerNode;
+      } else if (selectedImageTarget) {
+        selectedImageTarget.classList.remove("layer-selected");
+        selectedImageTarget = null;
+      }
+    }
+
+    function selectImageTarget(node) {
+      if (!document.body.classList.contains("editing")) return;
+      selectedImageTarget?.classList.remove("layer-selected");
+      if (selectedLayerNode) {
+        selectedLayerNode.classList.remove("layer-selected");
+        getLayerTarget(selectedLayerNode).classList.remove("layer-selected");
+      }
+      selectedImageTarget = node;
+      selectedImageTarget.classList.add("layer-selected");
+      selectedLayerNode = node;
+      getLayerTarget(node).classList.add("layer-selected");
+    }
+
+    function activeLayerTargets() {
+      const seen = new Set();
+      return Array.from(slides[active].querySelectorAll("[data-editable], .user-asset, [data-image-frame]")).map(getLayerTarget).filter((target) => {
+        if (!target || seen.has(target)) return false;
+        seen.add(target);
+        return true;
+      });
+    }
+
+    function moveSelectedLayer(direction) {
+      if (!document.body.classList.contains("editing") || !selectedLayerNode) return false;
+      const target = getLayerTarget(selectedLayerNode);
+      const current = layerValue(target);
+      const peers = activeLayerTargets().filter((peer) => peer !== target).map(layerValue);
+      const lowerLayers = peers.filter((value) => value < current);
+      const higherLayers = peers.filter((value) => value > current);
+      const nextLayer = direction < 0
+        ? (lowerLayers.length ? Math.max(...lowerLayers) - 1 : current - 1)
+        : (higherLayers.length ? Math.min(...higherLayers) + 1 : current + 1);
+      setLayer(target, nextLayer);
+      markDirty();
+      return true;
+    }
+
+    function moveImageLayer(direction) {
+      if (!document.body.classList.contains("editing") || !selectedImageTarget) return false;
+      selectedLayerNode = selectedImageTarget;
+      return moveSelectedLayer(direction);
+    }
+
+    function sendImageToEdge(edge) {
+      if (!document.body.classList.contains("editing") || !selectedImageTarget) return false;
+      const target = getLayerTarget(selectedImageTarget);
+      const peerLayers = activeLayerTargets().filter((peer) => peer !== target).map(layerValue);
+      const layer = edge === "front"
+        ? (peerLayers.length ? Math.max(...peerLayers) + 1 : layerValue(target) + 1)
+        : (peerLayers.length ? Math.min(...peerLayers) - 1 : layerValue(target) - 1);
+      setLayer(target, layer);
+      markDirty();
+      return true;
+    }
+
+    function setTransition(mode) {
+      transitionMode = mode;
+      document.body.classList.remove("transition-slide", "transition-fade", "transition-zoom", "transition-rise", "transition-wipe", "transition-stack");
+      document.body.classList.add(`transition-${mode}`);
+      transitionSelect.value = mode;
+      goToSlide(active, false);
+    }
+
+    function goToSlide(index, updateHash = true) {
+      active = Math.max(0, Math.min(slides.length - 1, index));
+      if (transitionMode === "slide") {
+        track.style.transform = `translate3d(0, -${active * 100}dvh, 0)`;
+      } else {
+        track.style.transform = "none";
+      }
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("is-active", i === active);
+      });
+      progress.querySelectorAll("a").forEach((dot, i) => {
+        dot.style.background = i === active ? "var(--as)" : "rgba(106, 106, 115, .32)";
+      });
+      if (updateHash) history.replaceState(null, "", `#s${active + 1}`);
+    }
+
+    function setEditing(enabled) {
+      document.body.classList.toggle("editing", enabled);
+      editableNodes.forEach((node) => {
+        node.setAttribute("contenteditable", enabled ? "true" : "false");
+      });
+      if (!enabled && selectedLayerNode) {
+        selectedLayerNode.classList.remove("layer-selected");
+        getLayerTarget(selectedLayerNode).classList.remove("layer-selected");
+        selectedLayerNode = null;
+      }
+      if (!enabled && selectedImageTarget) {
+        selectedImageTarget.classList.remove("layer-selected");
+        selectedImageTarget = null;
+      }
+      if (!enabled) selectedTextNode = null;
+      editToggle.classList.toggle("active", enabled);
+      editToggle.textContent = enabled ? "Editing on" : "Edit text";
+    }
+
+    function setTextMotion(kind) {
+      if (!selectedTextNode) {
+        saveDeck.textContent = "Pick text";
+        setTimeout(() => { saveDeck.textContent = "Save"; }, 1100);
+        return;
+      }
+      selectedTextNode.classList.remove("text-motion-rise", "text-motion-type", "text-motion-step", "text-motion-pulse");
+      selectedTextNode.style.animation = "none";
+      selectedTextNode.offsetHeight;
+      selectedTextNode.style.animation = "";
+      if (kind && kind !== "none") selectedTextNode.classList.add(`text-motion-${kind}`);
+      markDirty();
+    }
+
+    function slideShell(inner, extraClass = "") {
+      const section = document.createElement("section");
+      section.className = `slide ${extraClass}`.trim();
+      section.innerHTML = inner;
+      return section;
+    }
+
+    function makeTemplate(type) {
+      const mark = `<div class="top-mark"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>New slide</span></div>`;
+      if (type === "cards") {
+        return slideShell(`${mark}<div class="slide-content"><div class="slide-kicker" data-editable>Template</div><h2 data-editable>Three useful proof points.</h2><div class="channel-grid"><article class="channel"><div class="channel-head"><div><div class="meta" data-editable>One</div><h3 data-editable>First card</h3></div><div class="app-stack"><img src="./assets/icons/bolt.svg" alt=""></div></div><p data-editable>Add a short supporting point here.</p><span class="meta" data-editable>Proof: metric</span></article><article class="channel featured"><div class="channel-head"><div><div class="meta" data-editable>Two</div><h3 data-editable>Second card</h3></div><div class="app-stack"><img src="./assets/icons/shield.svg" alt=""></div></div><p data-editable>Add a short supporting point here.</p><span class="meta" data-editable>Proof: result</span></article><article class="channel"><div class="channel-head"><div><div class="meta" data-editable>Three</div><h3 data-editable>Third card</h3></div><div class="app-stack"><img src="./assets/icons/repeat.svg" alt=""></div></div><p data-editable>Add a short supporting point here.</p><span class="meta" data-editable>Proof: habit</span></article></div></div>`);
+      }
+      if (type === "proof") {
+        return slideShell(`${mark}<div class="slide-content map-grid"><div class="hero-copy"><div class="slide-kicker" data-editable>Proof slide</div><h2 data-editable>Show the evidence.</h2><p data-editable>Use this slide for a chart, screenshot, imported image, or before/after artifact.</p></div><figure class="hero-art" data-image-frame><img src="./assets/2044.svg" alt="Replaceable proof artwork"></figure></div>`);
+      }
+      if (type === "workspace") {
+        return slideShell(`${mark}<div class="slide-content"><div class="workspace-stage"><div class="workspace-head"><span data-editable>Sai workspace</span><span class="badge badge-dark"><i class="badge-dot"></i><span data-editable>Running</span></span></div><div class="workspace-body"><div class="workspace-row"><span class="workspace-dot"></span><span data-editable>Opened Salesforce account list.</span></div><div class="workspace-row"><span class="workspace-dot"></span><span data-editable>Researched five priority prospects.</span></div><div class="workspace-row"><span class="workspace-dot"></span><span data-editable>Generated account briefs with source links.</span></div><div class="workspace-row"><span class="workspace-dot"></span><span data-editable>Suggested daily recurrence at 8:30 AM.</span></div><div class="workspace-row"><span class="workspace-dot"></span><span data-editable>Ready for approval before outreach.</span></div></div></div></div>`, "workspace-slide");
+      }
+      if (type === "ascii") {
+        return slideShell(`${mark}<div class="slide-content ascii-layout"><div class="hero-copy"><div class="slide-kicker" data-editable>Brand asset</div><h2 data-editable>ASCII motion gives Sai a memory.</h2><p data-editable>Use the generated ASCII artwork as a replaceable brand surface for title slides, chapter breaks, and launch moments.</p><div class="chip-row"><span class="chip">ASCII</span><span class="chip">Sai mark</span><span class="chip">Motion ready</span></div></div><figure class="ascii-panel" data-image-frame><img src="./assets/ascii-art-wide.png" alt="Sai ASCII brand artwork"></figure></div>`);
+      }
+      if (type === "desktop") {
+        return slideShell(`${mark}<div class="slide-content map-grid"><div class="hero-copy"><div class="slide-kicker" data-editable>Product UI</div><h2 data-editable>Show what Sai is doing.</h2><p data-editable>Pair the claim with a live-looking desktop surface, visible cursor, and editable action labels.</p></div><div class="desktop-mock"><div class="desktop-chrome"><span class="traffic"><i></i><i></i><i></i></span><span data-editable>sai.cloud/workspace</span></div><div class="desktop-canvas"><div class="desktop-card"><span class="desktop-line" data-editable>Workspace target</span><span class="desktop-line hot" data-editable>Sai active step</span><span class="desktop-line" data-editable>Output preview</span><span class="desktop-line" style="width:72%" data-editable>Approval note</span></div><div class="desktop-cursor" data-image-frame aria-label="Editable cursor highlight"></div></div><div class="desktop-footer"><span data-editable>Sai operating browser</span><span class="badge badge-dark"><i class="badge-dot"></i><span data-editable>Live</span></span></div></div></div>`);
+      }
+      if (type === "comparison") {
+        return slideShell(`${mark}<div class="slide-content"><div class="slide-kicker" data-editable>Comparison</div><h2 data-editable>Manual work vs. Sai loop.</h2><div class="compare-grid"><article class="compare-card"><div><div class="meta" data-editable>Before</div><h3 data-editable>Manual tab switching</h3></div><p data-editable>Work is scattered across CRM, inbox, calendar, and browser research.</p><span class="meta" data-editable>Signal: slow handoff</span></article><article class="compare-card dark"><div><div class="meta" data-editable>After</div><h3 data-editable>Sai completes the loop</h3></div><p data-editable>The coworker runs the workspace, logs each step, and asks for approval at the right moment.</p><span class="meta" data-editable>Signal: recurring task</span></article></div></div>`);
+      }
+      if (type === "quote") {
+        return slideShell(`${mark}<div class="slide-content"><div class="quote-marketing"><div class="slide-kicker" data-editable>Positioning</div><div class="quote-text" data-editable>Put the coworker where the work already happens.</div><p data-editable>Placement should make the next action obvious, observable, and repeatable.</p></div><figure class="user-asset" style="left:68%;top:14%;width:min(22vw,16rem);"><img src="./assets/ascii-art-face.png" alt="Sai ASCII face"><span class="resize-handle"></span></figure></div>`);
+      }
+      if (type === "metrics") {
+        return slideShell(`${mark}<div class="slide-content"><div class="slide-kicker" data-editable>Metrics</div><h2 data-editable>Track the task loop.</h2><p style="max-width:44rem" data-editable>Measure whether placement turns intent into completed, recurring work.</p><div style="margin-top: clamp(1.2rem, 4vh, 2.5rem); max-width: 64rem;"><div class="metric-row"><span class="meta" data-editable>Task seen</span><div class="bar-track"><div class="bar-fill" style="width: 92%;"></div></div><span class="meta" data-editable>92%</span></div><div class="metric-row"><span class="meta" data-editable>Task started</span><div class="bar-track"><div class="bar-fill" style="width: 68%;"></div></div><span class="meta" data-editable>68%</span></div><div class="metric-row"><span class="meta" data-editable>Approved</span><div class="bar-track"><div class="bar-fill" style="width: 54%;"></div></div><span class="meta" data-editable>54%</span></div><div class="metric-row"><span class="meta" data-editable>Recurring</span><div class="bar-track"><div class="bar-fill" style="width: 36%; background: var(--as);"></div></div><span class="meta" data-editable>36%</span></div></div></div>`);
+      }
+      if (type === "dark") {
+        return slideShell(`${mark}<div class="slide-content"><div class="hero-copy"><div class="slide-kicker" data-editable>Closing</div><h2 data-editable>Make it recurring.</h2><p data-editable>End with one clear recommendation and a next action.</p><div class="cta">◆ Powered by Sai</div></div></div>`, "closing");
+      }
+      return slideShell(`${mark}<div class="slide-content hero"><div class="hero-copy"><div class="slide-kicker" data-editable>New section</div><h1 data-editable>Write a strong headline.</h1><p class="lede" data-editable>Add one sharp supporting sentence.</p></div><figure class="hero-art" data-image-frame><img src="./assets/2051.svg" alt="Sai brand artwork"></figure></div>`);
+    }
+
+    function addTemplate(type) {
+      const slide = makeTemplate(type || "title");
+      track.appendChild(slide);
+      refreshCollections();
+      goToSlide(slides.length - 1);
+      markDirty();
+    }
+
+    function deleteCurrentSlide() {
+      if (slides.length <= 1) {
+        saveDeck.textContent = "Keep 1 slide";
+        setTimeout(() => { saveDeck.textContent = "Save"; }, 1100);
+        return;
+      }
+      const current = slides[active];
+      const next = Math.max(0, active - 1);
+      current.remove();
+      selectedLayerNode = null;
+      selectedImageTarget = null;
+      refreshCollections();
+      goToSlide(next);
+      markDirty();
+    }
+
+    function mediaTag(src, type, alt = "Imported media") {
+      if (type === "video") return `<video src="${src}" muted loop playsinline autoplay></video>`;
+      return `<img src="${src}" alt="${alt}">`;
+    }
+
+    function addImage(dataUrl, target = selectedImageTarget, type = "image") {
+      if (target?.matches?.("[data-image-frame]")) {
+        target.innerHTML = mediaTag(dataUrl, type, "Imported image");
+        selectImageTarget(target);
+        markDirty();
+        return;
+      }
+      if (target?.classList?.contains("user-asset")) {
+        const handle = target.querySelector(".resize-handle")?.outerHTML || `<span class="resize-handle"></span>`;
+        target.innerHTML = `${mediaTag(dataUrl, type, "Imported image")}${handle}`;
+        selectImageTarget(target);
+        markDirty();
+        return;
+      }
+      const asset = document.createElement("div");
+      asset.className = "user-asset";
+      asset.style.left = "58%";
+      asset.style.top = "18%";
+      asset.innerHTML = `${mediaTag(dataUrl, type, "Imported image")}<span class="resize-handle"></span>`;
+      slides[active].appendChild(asset);
+      setEditing(true);
+      attachAssetBehavior();
+      attachImageFrameBehavior();
+      selectLayer(asset);
+      selectImageTarget(asset);
+      markDirty();
+    }
+
+    function selectedImageElement() {
+      return selectedImageTarget?.querySelector?.("img, video") || null;
+    }
+
+    function requireImageTarget() {
+      if (selectedImageTarget) return true;
+      saveDeck.textContent = "Pick image";
+      setTimeout(() => { saveDeck.textContent = "Save"; }, 1100);
+      return false;
+    }
+
+    function setSelectedImageFit(mode) {
+      if (!requireImageTarget()) return;
+      const image = selectedImageElement();
+      if (!image) return;
+      image.style.objectFit = mode;
+      markDirty();
+    }
+
+    function deleteSelectedImage() {
+      if (!requireImageTarget()) return;
+      if (selectedImageTarget.classList.contains("user-asset")) {
+        selectedImageTarget.remove();
+      } else {
+        const image = selectedImageElement();
+        if (image) image.remove();
+      }
+      selectedImageTarget = null;
+      selectedLayerNode = null;
+      markDirty();
+    }
+
+    function setSelectedImageAsBackground() {
+      if (!requireImageTarget()) return;
+      const media = selectedImageElement();
+      if (!media?.src) return;
+      const slide = slides[active];
+      setSlideBackground(media.getAttribute("src") || media.src, media.tagName.toLowerCase() === "video" ? "video" : "image", slide);
+      if (selectedImageTarget.classList.contains("user-asset")) {
+        selectedImageTarget.remove();
+        selectedImageTarget = null;
+        selectedLayerNode = null;
+      }
+      markDirty();
+    }
+
+    function setSlideBackground(src, type = "image", slide = slides[active]) {
+      let background = slide.querySelector(":scope > .slide-bg");
+      if (!background) {
+        background = document.createElement("div");
+        background.className = "slide-bg";
+        slide.prepend(background);
+      }
+      background.innerHTML = type === "video"
+        ? `<video src="${src}" muted loop playsinline autoplay></video>`
+        : `<img src="${src}" alt="Slide background image">`;
+      markDirty();
+    }
+
+    function handleImageAction(action) {
+      if (!action) return;
+      if (action === "replace") {
+        if (requireImageTarget()) imageInput.click();
+        return;
+      }
+      if (action === "forward") moveImageLayer(1);
+      if (action === "backward") moveImageLayer(-1);
+      if (action === "front") sendImageToEdge("front");
+      if (action === "back") sendImageToEdge("back");
+      if (action === "contain") setSelectedImageFit("contain");
+      if (action === "cover") setSelectedImageFit("cover");
+      if (action === "background") setSelectedImageAsBackground();
+      if (action === "delete") deleteSelectedImage();
+    }
+
+    function renderMediaLibrary() {
+      if (!mediaItems.length) {
+        mediaGrid.innerHTML = `<div class="media-empty"><div>No media yet. Drop images or videos here, or upload files.</div><button type="button" data-upload>Upload media</button></div>`;
+        mediaGrid.querySelector("[data-upload]")?.addEventListener("click", () => mediaInput.click());
+        return;
+      }
+      mediaGrid.innerHTML = mediaItems.map((item, index) => `
+        <article class="media-card">
+          <button class="media-thumb" type="button" data-select="${index}" aria-label="Select ${item.name}">
+            ${mediaTag(item.src, item.type, item.name)}
+            <span class="media-kind">${item.type}</span>
+          </button>
+          <div class="media-name" title="${item.name}">${item.name}</div>
+          <button type="button" data-background="${index}">Set background</button>
+        </article>
+      `).join("");
+      mediaGrid.querySelectorAll("[data-select]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = mediaItems[Number(button.dataset.select)];
+          if (item) addImage(item.src, selectedImageTarget, item.type);
+        });
+      });
+      mediaGrid.querySelectorAll("[data-background]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = mediaItems[Number(button.dataset.background)];
+          if (item) setSlideBackground(item.src, item.type);
+        });
+      });
+    }
+
+    function addMediaFiles(files) {
+      Array.from(files || []).forEach((file) => {
+        if (!file.type.startsWith("image/") && !file.type.startsWith("video/")) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          mediaItems.unshift({
+            name: file.name,
+            type: file.type.startsWith("video/") ? "video" : "image",
+            src: reader.result,
+          });
+          renderMediaLibrary();
+          mediaSidebar.classList.add("open");
+          markDirty();
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function attachImageFrameBehavior() {
+      document.querySelectorAll("[data-image-frame]").forEach((frame) => {
+        if (imageFrameBoundNodes.has(frame)) return;
+        imageFrameBoundNodes.add(frame);
+        frame.addEventListener("pointerdown", () => selectImageTarget(frame));
+      });
+    }
+
+    function attachAssetBehavior() {
+      document.querySelectorAll(".user-asset").forEach((asset) => {
+        if (assetBoundNodes.has(asset)) return;
+        assetBoundNodes.add(asset);
+        asset.addEventListener("pointerdown", (event) => {
+          if (!document.body.classList.contains("editing")) return;
+          selectLayer(asset);
+          const resizing = event.target.classList.contains("resize-handle");
+          const startX = event.clientX;
+          const startY = event.clientY;
+          const rect = asset.getBoundingClientRect();
+          const parentRect = asset.closest(".slide").getBoundingClientRect();
+          const startLeft = rect.left - parentRect.left;
+          const startTop = rect.top - parentRect.top;
+          const startWidth = rect.width;
+          asset.setPointerCapture(event.pointerId);
+          function move(pointerEvent) {
+            if (resizing) {
+              asset.style.width = `${Math.max(80, startWidth + pointerEvent.clientX - startX)}px`;
+            } else {
+              asset.style.left = `${startLeft + pointerEvent.clientX - startX}px`;
+              asset.style.top = `${startTop + pointerEvent.clientY - startY}px`;
+            }
+            markDirty();
+          }
+          function up() {
+            asset.removeEventListener("pointermove", move);
+            asset.removeEventListener("pointerup", up);
+          }
+          asset.addEventListener("pointermove", move);
+          asset.addEventListener("pointerup", up);
+        });
+      });
+    }
+
+    function cleanEditorMarkup(root) {
+      root.querySelectorAll("[data-bound], [data-layer-bound]").forEach((node) => {
+        node.removeAttribute("data-bound");
+        node.removeAttribute("data-layer-bound");
+      });
+      root.querySelectorAll(".layer-selected").forEach((node) => node.classList.remove("layer-selected"));
+      root.querySelectorAll(".visual-3d").forEach((node) => node.remove());
+    }
+
+    function collectState() {
+      const cleanTrack = track.cloneNode(true);
+      cleanEditorMarkup(cleanTrack);
+      return {
+        html: cleanTrack.innerHTML,
+        active,
+        transitionMode,
+        mediaItems,
+      };
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectState()));
+        saveDeck.textContent = "Saved";
+        setTimeout(() => { saveDeck.textContent = "Save"; }, 1100);
+      } catch {
+        saveDeck.textContent = "Too large";
+      }
+    }
+
+    function exportHtml() {
+      saveState();
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelectorAll("[contenteditable]").forEach((node) => node.removeAttribute("contenteditable"));
+      clone.querySelectorAll(".edit-toolbar, .media-sidebar, #imageInput, #mediaInput").forEach((node) => node.remove());
+      cleanEditorMarkup(clone);
+      clone.querySelector("body")?.classList.remove("editing");
+      const html = `<!doctype html>\n${clone.outerHTML}`;
+      const blob = new Blob([html], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "sai-master-slides-templates.html";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    editToggle.addEventListener("click", () => setEditing(!document.body.classList.contains("editing")));
+    imageButton.addEventListener("click", () => imageInput.click());
+    mediaToggle.addEventListener("click", () => {
+      mediaSidebar.classList.toggle("open");
+      renderMediaLibrary();
+    });
+    mediaClose.addEventListener("click", () => mediaSidebar.classList.remove("open"));
+    mediaUpload.addEventListener("click", () => mediaInput.click());
+    imageActionSelect.addEventListener("change", () => {
+      handleImageAction(imageActionSelect.value);
+      imageActionSelect.value = "";
+    });
+    deleteSlideButton.addEventListener("click", deleteCurrentSlide);
+    imageInput.addEventListener("change", () => {
+      const file = imageInput.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => addImage(reader.result, selectedImageTarget, file.type.startsWith("video/") ? "video" : "image");
+      reader.readAsDataURL(file);
+      imageInput.value = "";
+    });
+    mediaInput.addEventListener("change", () => {
+      addMediaFiles(mediaInput.files);
+      mediaInput.value = "";
+    });
+    mediaDrop.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      mediaDrop.classList.add("dragging");
+    });
+    mediaDrop.addEventListener("dragleave", () => mediaDrop.classList.remove("dragging"));
+    mediaDrop.addEventListener("drop", (event) => {
+      event.preventDefault();
+      mediaDrop.classList.remove("dragging");
+      addMediaFiles(event.dataTransfer.files);
+    });
+    document.addEventListener("dragover", (event) => {
+      if (event.dataTransfer?.types?.includes("Files")) event.preventDefault();
+    });
+    document.addEventListener("drop", (event) => {
+      if (!event.dataTransfer?.files?.length || mediaSidebar.contains(event.target)) return;
+      event.preventDefault();
+      addMediaFiles(event.dataTransfer.files);
+    });
+    templateSelect.addEventListener("change", () => {
+      if (templateSelect.value) addTemplate(templateSelect.value);
+      templateSelect.value = "";
+    });
+    textAnimSelect.addEventListener("change", () => {
+      if (!textAnimSelect.value) return;
+      setTextMotion(textAnimSelect.value);
+      textAnimSelect.value = "";
+    });
+    transitionSelect.addEventListener("change", () => {
+      if (!transitionSelect.value) return;
+      setTransition(transitionSelect.value);
+      markDirty();
+    });
+    saveDeck.addEventListener("click", saveState);
+    exportDeck.addEventListener("click", exportHtml);
+
+    window.addEventListener("keydown", (event) => {
+      const layerShortcut = event.metaKey && !event.ctrlKey && !event.altKey && ["BracketRight", "BracketLeft"].includes(event.code);
+      if (layerShortcut) {
+        event.preventDefault();
+        moveSelectedLayer(event.code === "BracketRight" ? -1 : 1);
+        return;
+      }
+      if (document.body.classList.contains("editing") && event.target?.isContentEditable) return;
+      if (!["ArrowDown", "ArrowRight", "PageDown", "ArrowUp", "ArrowLeft", "PageUp", "Home", "End"].includes(event.key)) return;
+      let next = active;
+      if (["ArrowDown", "ArrowRight", "PageDown"].includes(event.key)) next = Math.min(slides.length - 1, active + 1);
+      if (["ArrowUp", "ArrowLeft", "PageUp"].includes(event.key)) next = Math.max(0, active - 1);
+      if (event.key === "Home") next = 0;
+      if (event.key === "End") next = slides.length - 1;
+      goToSlide(next);
+    });
+
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+      if (saved?.html) {
+        track.innerHTML = saved.html;
+        transitionMode = saved.transitionMode || "slide";
+        active = saved.active || 0;
+        const savedMedia = Array.isArray(saved.mediaItems) ? saved.mediaItems : [];
+        const mergedMedia = [...defaultMediaItems, ...savedMedia];
+        mediaItems = mergedMedia.filter((item, index, list) => (
+          item?.src && list.findIndex((candidate) => candidate.src === item.src) === index
+        ));
+      }
+    } catch {}
+    refreshCollections();
+    renderMediaLibrary();
+    setEditing(false);
+    setTransition(transitionMode);
+    const initial = Number.parseInt((location.hash || `#s${active + 1}`).replace("#s", ""), 10);
+    goToSlide(Number.isFinite(initial) ? initial - 1 : active, false);
+  </script>
+</body>
+</html>
