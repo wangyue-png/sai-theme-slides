@@ -3,12 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sai Master Slides Templates</title>
+  <title>Sai Master Template - Free from your computer</title>
   <style>
     @font-face {
       font-family: "Manrope";
       src: url("./assets/Manrope-VariableFont_wght.ttf") format("truetype-variations");
       font-weight: 200 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Adamina";
+      src: url("./assets/Adamina-Regular.ttf") format("truetype");
+      font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
@@ -156,6 +164,7 @@
       --gg: rgba(22, 211, 66, 0.20);
       --ab: #0c0c0c;
       --abt: #fafafa;
+      --font-heading: "Adamina", Georgia, "Times New Roman", serif;
       --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
       --font-mono: "SF Mono", Menlo, Consolas, monospace;
       --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
@@ -230,16 +239,18 @@
 
     h1, h2, h3, p { margin: 0; }
     h1 {
+      font-family: var(--font-heading);
       font-size: clamp(3.4rem, 8vw, 7.25rem);
-      line-height: .9;
-      letter-spacing: -.055em;
-      font-weight: 760;
+      line-height: 1.04;
+      letter-spacing: 0;
+      font-weight: 400;
     }
     h2 {
+      font-family: var(--font-heading);
       font-size: clamp(2rem, 5.2vw, 4.6rem);
-      line-height: .96;
-      letter-spacing: -.052em;
-      font-weight: 760;
+      line-height: 1.08;
+      letter-spacing: 0;
+      font-weight: 400;
     }
     h3 {
       font-size: clamp(1.1rem, 2vw, 1.65rem);
@@ -289,6 +300,96 @@
       filter: saturate(.95) contrast(1.03);
     }
 
+    .cover-editorial {
+      background: #f7f8f1;
+      color: #161819;
+      isolation: isolate;
+    }
+
+    .cover-editorial::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(247, 248, 241, .98) 0%, rgba(247, 248, 241, .9) 68%, rgba(235, 238, 229, .98) 100%);
+      opacity: 1;
+      z-index: 0;
+    }
+
+    .cover-editorial::after {
+      content: "";
+      position: absolute;
+      right: clamp(-9rem, -9vw, -4rem);
+      bottom: clamp(-7rem, -8vw, -3rem);
+      width: min(54vw, 48rem);
+      height: min(68vw, 58rem);
+      background: url("./assets/ascii-art-wide.png") center / contain no-repeat;
+      opacity: .07;
+      filter: grayscale(1) contrast(1.2);
+      z-index: 0;
+    }
+
+    .cover-mark {
+      color: #161819;
+      left: clamp(2.75rem, 7vw, 7rem);
+    }
+
+    .cover-stage {
+      position: relative;
+      z-index: 1;
+      min-height: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      padding: clamp(6.5rem, 12vh, 8.25rem) clamp(2.75rem, 7vw, 7rem) clamp(8.75rem, 18vh, 12.5rem);
+    }
+
+    .cover-copy {
+      align-self: center;
+      display: grid;
+      gap: clamp(.9rem, 1.8vh, 1.35rem);
+      max-width: 60rem;
+      padding-bottom: 0;
+    }
+
+    .cover-copy .slide-kicker {
+      color: var(--gt);
+      letter-spacing: .08em;
+    }
+
+    .cover-copy h1 {
+      font-size: clamp(4rem, 7.3vw, 7.1rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+      max-width: 12.5ch;
+    }
+
+    .cover-copy .lede {
+      color: #555b55;
+      font-size: clamp(1.05rem, 1.7vw, 1.42rem);
+      line-height: 1.35;
+      margin-top: clamp(.2rem, .8vh, .55rem);
+    }
+
+    .cover-chip-row .chip {
+      background: transparent;
+      border-color: rgba(15, 166, 53, .2);
+      color: var(--gt);
+    }
+
+    @media (max-width: 900px) {
+      .cover-stage {
+        grid-template-columns: 1fr;
+        padding-top: 5.5rem;
+      }
+      .cover-copy {
+        align-self: start;
+      }
+      .cover-copy h1 {
+        max-width: 11ch;
+      }
+    }
+
     .chip-row {
       display: flex;
       flex-wrap: wrap;
@@ -297,14 +398,14 @@
     }
 
     .chip {
-      border: 1px solid var(--b1);
+      border: 1px solid rgba(15, 166, 53, .22);
       border-radius: 999px;
-      background: var(--bgcard);
+      background: rgba(22, 211, 66, .07);
       padding: .55rem .8rem;
       font: 600 clamp(.68rem, .95vw, .78rem)/1 var(--font-mono);
       text-transform: uppercase;
       letter-spacing: .06em;
-      color: var(--t2);
+      color: var(--gt);
     }
 
     .lime { color: var(--gt); }
@@ -972,6 +1073,7 @@
       bottom: clamp(.8rem, 2vw, 1.25rem);
       transform: translateX(-50%);
       display: flex;
+      flex-wrap: wrap;
       gap: .5rem;
       align-items: center;
       width: min(96vw, 96rem);
@@ -982,6 +1084,8 @@
       background: rgba(255,255,255,.82);
       backdrop-filter: blur(16px);
       box-shadow: 0 18px 50px rgba(12,12,12,.1);
+      max-height: none;
+      overflow: visible;
     }
 
     .edit-toolbar button {
@@ -1009,11 +1113,75 @@
       white-space: nowrap;
     }
 
+    .edit-toolbar input[type="color"] {
+      width: 2.35rem;
+      height: 2.35rem;
+      padding: .25rem;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+    }
+
     .edit-toolbar button.active,
     .edit-toolbar button:hover,
     .edit-toolbar select:hover {
       background: var(--ab);
       color: var(--abt);
+    }
+
+    .edit-toolbar .stepper {
+      min-width: 2.35rem;
+      padding-inline: .72rem;
+      font-size: .9rem;
+    }
+
+    .toolbar-group {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+    }
+
+    .toolbar-panel {
+      position: fixed;
+      left: 50%;
+      bottom: clamp(4.8rem, 8.5vh, 6.2rem);
+      z-index: 36;
+      transform: translateX(-50%);
+      display: none;
+      flex-wrap: wrap;
+      gap: .45rem;
+      align-items: center;
+      justify-content: center;
+      width: max-content;
+      max-width: min(94vw, 58rem);
+      padding: .45rem;
+      border: 1px solid var(--b1);
+      border-radius: 999px;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 54px rgba(12,12,12,.12);
+    }
+
+    body.editing .toolbar-panel,
+    .toolbar-group.open .toolbar-panel {
+      display: inline-flex;
+    }
+
+    .toolbar-panel input[type="color"] {
+      width: 2.2rem;
+      height: 2.2rem;
+      padding: .2rem;
+      border: 1px solid var(--b1);
+      background: white;
+    }
+
+    .toolbar-divider {
+      width: 1px;
+      align-self: stretch;
+      min-height: 1.8rem;
+      background: var(--b1);
     }
 
     .media-sidebar {
@@ -1024,7 +1192,7 @@
       bottom: clamp(5.5rem, 10vh, 7rem);
       width: min(22rem, calc(100vw - 2rem));
       display: none;
-      grid-template-rows: auto auto 1fr;
+      grid-template-rows: auto auto auto 1fr;
       gap: .75rem;
       padding: .85rem;
       border: 1px solid var(--b1);
@@ -1056,7 +1224,9 @@
     }
 
     .media-actions button,
-    .media-empty button {
+    .media-empty button,
+    .media-tool-row button,
+    .media-tool-row select {
       border: 0;
       border-radius: 999px;
       padding: .55rem .75rem;
@@ -1067,16 +1237,64 @@
       white-space: nowrap;
     }
 
+    .media-tool-row select {
+      min-width: 0;
+      border: 1px solid var(--b1);
+      background: white;
+      color: var(--t2);
+    }
+
+    .media-tool-row input[type="color"] {
+      width: 2.35rem;
+      height: 2.35rem;
+      padding: .2rem;
+      border: 1px solid var(--b1);
+      border-radius: 999px;
+      background: white;
+      cursor: pointer;
+    }
+
     .media-actions button.secondary {
       background: transparent;
       color: var(--t2);
       border: 1px solid var(--b1);
     }
 
+    .media-tools {
+      display: grid;
+      gap: .55rem;
+      padding: .7rem;
+      border: 1px solid var(--b1);
+      border-radius: 12px;
+      background: rgba(255,255,255,.62);
+    }
+
+    .media-tool-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .45rem;
+      align-items: center;
+    }
+
+    .media-tool-row.compact {
+      grid-template-columns: 1fr auto 1fr;
+    }
+
+    .media-tool-row.full {
+      grid-template-columns: 1fr;
+    }
+
+    .media-tool-label {
+      color: var(--t3);
+      font: 800 .58rem/1 var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
     .media-drop {
       display: grid;
       place-items: center;
-      min-height: 4.8rem;
+      min-height: 4.25rem;
       border: 1px dashed rgba(22,211,66,.55);
       border-radius: 12px;
       background: rgba(22,211,66,.06);
@@ -1122,7 +1340,14 @@
       border: 1px solid var(--b1);
       border-radius: 10px;
       overflow: hidden;
-      background: var(--bg3);
+      background:
+        linear-gradient(45deg, rgba(12, 12, 12, .055) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(12, 12, 12, .055) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(12, 12, 12, .055) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(12, 12, 12, .055) 75%),
+        #fff;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+      background-size: 16px 16px;
       cursor: pointer;
     }
 
@@ -1131,7 +1356,8 @@
       width: 100%;
       height: 100%;
       max-height: none;
-      object-fit: cover;
+      object-fit: contain;
+      padding: .35rem;
       display: block;
     }
 
@@ -1164,6 +1390,19 @@
       color: var(--t2);
       font: 800 .64rem/1 var(--font-sans);
       cursor: pointer;
+    }
+
+    .media-card .media-thumb {
+      border-radius: 10px;
+      padding: 0;
+      background:
+        linear-gradient(45deg, rgba(12, 12, 12, .055) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(12, 12, 12, .055) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(12, 12, 12, .055) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(12, 12, 12, .055) 75%),
+        #fff;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+      background-size: 16px 16px;
     }
 
     [data-editable] {
@@ -1219,6 +1458,12 @@
       user-select: none;
     }
 
+    .user-asset.ascii-asset {
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
     .user-asset img,
     .user-asset video {
       display: block;
@@ -1228,6 +1473,10 @@
       object-fit: contain;
       border-radius: inherit;
       pointer-events: none;
+    }
+
+    .user-asset.ascii-asset img {
+      object-fit: contain;
     }
 
     .resize-handle {
@@ -1349,20 +1598,38 @@
   </nav>
   <div class="edit-toolbar" aria-label="Editing controls">
     <button id="editToggle" type="button">Edit text</button>
-    <button id="imageButton" type="button">Image</button>
+    <div class="toolbar-group" id="textToolsGroup">
+      <button id="textToolsToggle" type="button">Text</button>
+      <div class="toolbar-panel" id="textToolsPanel" aria-label="Text formatting controls">
+        <button id="boldButton" type="button" title="Bold">B</button>
+        <button id="italicButton" type="button" title="Italic"><i>I</i></button>
+        <select id="fontSelect" aria-label="Font">
+          <option value="">Font</option>
+          <option value="var(--font-heading)">Adamina</option>
+          <option value="var(--font-sans)">Manrope</option>
+          <option value="var(--font-mono)">Mono</option>
+        </select>
+        <button id="fontSmaller" class="stepper" type="button" title="Decrease font size">A−</button>
+        <button id="fontLarger" class="stepper" type="button" title="Increase font size">A+</button>
+        <input id="textColor" type="color" value="#2b2d2f" aria-label="Text color" title="Text color">
+        <span class="toolbar-divider" aria-hidden="true"></span>
+        <button id="alignLeftButton" class="stepper" type="button" title="Align left">L</button>
+        <button id="alignCenterButton" class="stepper" type="button" title="Align center">C</button>
+        <button id="alignRightButton" class="stepper" type="button" title="Align right">R</button>
+        <select id="textAnimSelect" aria-label="Text animation">
+          <option value="">Motion</option>
+          <option value="none">None</option>
+          <option value="rise">Rise</option>
+          <option value="type">Type</option>
+          <option value="step">Step log</option>
+          <option value="pulse">Pulse</option>
+        </select>
+        <button id="textResetButton" type="button" title="Reset text style">Reset</button>
+      </div>
+    </div>
+    <button id="saveDeck" type="button">Save</button>
+    <button id="exportDeck" type="button">Export HTML</button>
     <button id="mediaToggle" type="button">Media</button>
-    <select id="imageActionSelect" aria-label="Image options">
-      <option value="">Image options</option>
-      <option value="replace">Replace</option>
-      <option value="forward">Layer up</option>
-      <option value="backward">Layer down</option>
-      <option value="front">To front</option>
-      <option value="back">To back</option>
-      <option value="contain">Fit</option>
-      <option value="cover">Fill</option>
-      <option value="background">As background</option>
-      <option value="delete">Delete image</option>
-    </select>
     <button id="deleteSlide" type="button">Delete slide</button>
     <select id="templateSelect" aria-label="Add slide template">
       <option value="">Add slide</option>
@@ -1377,14 +1644,6 @@
       <option value="quote">Quote</option>
       <option value="metrics">Metrics</option>
     </select>
-    <select id="textAnimSelect" aria-label="Text animation">
-      <option value="">Text motion</option>
-      <option value="none">None</option>
-      <option value="rise">Rise</option>
-      <option value="type">Type</option>
-      <option value="step">Step log</option>
-      <option value="pulse">Pulse</option>
-    </select>
     <select id="transitionSelect" aria-label="Animate slides">
       <option value="">Animate</option>
       <option value="slide">Slide</option>
@@ -1394,42 +1653,60 @@
       <option value="wipe">Wipe</option>
       <option value="stack">Stack</option>
     </select>
-    <button id="saveDeck" type="button">Save</button>
-    <button id="exportDeck" type="button">Export HTML</button>
   </div>
   <input id="imageInput" type="file" accept="image/*,video/*" hidden>
   <input id="mediaInput" type="file" accept="image/*,video/*" multiple hidden>
+  <input id="asciiInput" type="file" accept="image/*" hidden>
 
   <aside class="media-sidebar" id="mediaSidebar" aria-label="Media library">
     <div class="media-head">
-      <span>Media library</span>
+      <span>Media</span>
       <div class="media-actions">
-        <button id="mediaUpload" type="button">Upload</button>
         <button id="mediaClose" class="secondary" type="button">Close</button>
       </div>
     </div>
-    <div class="media-drop" id="mediaDrop">Drop images or videos here<br>then choose a slide background.</div>
+    <div class="media-tools" aria-label="Media tools">
+      <div class="media-tool-row">
+        <button id="imageButton" type="button">Insert file</button>
+        <button id="mediaUpload" type="button">Add library</button>
+      </div>
+      <div class="media-tool-row compact">
+        <button id="asciiButton" type="button">ASCII</button>
+        <input id="asciiColor" type="color" value="#16D342" aria-label="ASCII color" title="ASCII color">
+        <select id="asciiWidth" aria-label="ASCII detail">
+          <option value="120">ASCII 120</option>
+          <option value="160" selected>ASCII 160</option>
+          <option value="200">ASCII 200</option>
+        </select>
+      </div>
+      <div class="media-tool-row full">
+        <select id="imageActionSelect" aria-label="Image options">
+          <option value="">Selected image</option>
+          <option value="replace">Replace</option>
+          <option value="forward">Layer up</option>
+          <option value="backward">Layer down</option>
+          <option value="front">To front</option>
+          <option value="back">To back</option>
+          <option value="contain">Fit</option>
+          <option value="cover">Fill</option>
+          <option value="background">As background</option>
+          <option value="delete">Delete image</option>
+        </select>
+      </div>
+    </div>
+    <div class="media-drop" id="mediaDrop">Drop images or videos here<br>first file is placed on the slide.</div>
     <div class="media-grid" id="mediaGrid"></div>
   </aside>
 
-  <main class="deck-track" id="deckTrack">
-  <section id="s1" class="slide" data-slide-index="0">
-    <div class="top-mark motion-in"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Sai master slides</span></div>
-    <div class="slide-content hero">
-      <div class="hero-copy">
-        <div class="slide-kicker motion-in delay-1" data-editable>Sai master slides templates</div>
-        <h1 class="motion-in delay-2" data-editable>Sai master slides templates.</h1>
-        <p class="lede motion-in delay-3" data-editable>A flexible editable deck system for Sai product stories, UI demos, brand assets, and motion-ready slide layouts.</p>
-        <div class="chip-row motion-in delay-4">
-          <span class="chip">CRM</span>
-          <span class="chip">Inbox</span>
-          <span class="chip">Browser workspace</span>
-          <span class="chip">Recurring tasks</span>
-        </div>
+  <main class="deck-track slides-offset" id="deckTrack">
+  <section id="s1" class="slide cover-editorial" data-slide-index="0">
+    <div class="top-mark cover-mark motion-in"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Sai</span></div>
+    <div class="slide-content cover-stage">
+      <div class="cover-copy">
+        <div class="slide-kicker motion-in delay-1" data-editable>Master slide template</div>
+        <h1 class="motion-in delay-2" data-editable>Free from your computer</h1>
+        <p class="lede motion-in delay-3" data-editable>Your 24/7 computer worker</p>
       </div>
-      <figure class="hero-art motion-in delay-3" data-image-frame>
-        <img src="./assets/ascii-art-wide.png" alt="Sai ASCII brand artwork">
-      </figure>
     </div>
   </section>
 
@@ -1438,13 +1715,13 @@
     <div class="slide-content map-grid">
       <div class="hero-copy">
         <div class="slide-kicker motion-in" data-editable>Core idea</div>
-        <h2 class="motion-in delay-1" data-editable>Win the handoff from intent to action.</h2>
-        <p class="motion-in delay-2" data-editable>The best placement appears after the user has a real job to do, but before they start the repetitive steps themselves.</p>
+        <h2 class="motion-in delay-1" data-editable>Turn computer work into delegated work.</h2>
+        <p class="motion-in delay-2" data-editable>Sai sits beside the tools people already use, takes on the repetitive steps, and keeps the work observable from start to finish.</p>
       </div>
       <div class="journey">
         <div class="stage motion-in delay-1"><div class="stage-num">01</div><div><strong data-editable>Task appears</strong><span data-editable>A meeting, lead, inbox thread, or research need creates urgency.</span></div><img class="stage-icon" src="./assets/icons/bolt.svg" alt=""></div>
         <div class="stage motion-in delay-2"><div class="stage-num">02</div><div><strong data-editable>Trust is visible</strong><span data-editable>Sai shows scope, credentials boundary, and what it will do.</span></div><img class="stage-icon" src="./assets/icons/shield.svg" alt=""></div>
-        <div class="stage motion-in delay-3"><div class="stage-num">03</div><div><strong data-editable>Workspace starts</strong><span data-editable>The coworker does the work in a private, observable desktop.</span></div><img class="stage-icon" src="./assets/icons/clock.svg" alt=""></div>
+        <div class="stage motion-in delay-3"><div class="stage-num">03</div><div><strong data-editable>Workspace starts</strong><span data-editable>The computer worker does the work in a private, observable desktop.</span></div><img class="stage-icon" src="./assets/icons/clock.svg" alt=""></div>
         <div class="stage motion-in delay-4"><div class="stage-num">04</div><div><strong data-editable>Habit forms</strong><span data-editable>The one-time task becomes a recurring job that runs without prompting.</span></div><img class="stage-icon" src="./assets/icons/repeat.svg" alt=""></div>
       </div>
     </div>
@@ -1459,9 +1736,9 @@
         <div class="placement-card"><b data-editable><span class="dot"></span>Browser</b><small data-editable>Monitor pages, extract data, turn browsing into artifacts.</small></div>
       </div>
       <div class="hero-copy">
-        <div class="slide-kicker motion-in delay-1" data-editable>Priority wedge</div>
-        <h2 class="motion-in delay-2" data-editable>Start with CRM and prospecting.</h2>
-        <p class="motion-in delay-3" data-editable>It has clear buyer pain, visible ROI, and a natural path from one task to daily recurrence. Browser workspace demos create demand; CRM converts it.</p>
+        <div class="slide-kicker motion-in delay-1" data-editable>Brand promise</div>
+        <h2 class="motion-in delay-2" data-editable>Freedom starts where the busywork lives.</h2>
+        <p class="motion-in delay-3" data-editable>Use this layout for product positioning, feature proof, audience-specific value props, or a tighter launch narrative around delegated computer work.</p>
       </div>
     </div>
   </section>
@@ -1469,23 +1746,23 @@
   <section id="s4" class="slide" data-slide-index="3">
     <div class="top-mark"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Channel test</span></div>
     <div class="slide-content">
-      <div class="slide-kicker motion-in" data-editable>Three tests</div>
-      <h2 class="motion-in delay-1" data-editable>Each channel needs a different proof object.</h2>
+      <div class="slide-kicker motion-in" data-editable>Template set</div>
+      <h2 class="motion-in delay-1" data-editable>Build every story from a few reusable rhythms.</h2>
       <div class="channel-grid">
         <article class="channel motion-in delay-1">
-          <div class="channel-head"><div><div class="meta" data-editable>Fast activation</div><h3 data-editable>Browser workspace</h3></div><div class="app-stack"><img src="./assets/icons/bolt.svg" alt=""></div></div>
-          <p data-editable>Public demo motion. Show Sai operating software in real time, then convert viewers into starter tasks.</p>
-          <span class="meta" data-editable>Proof: live artifact</span>
+          <div class="channel-head"><div><div class="meta" data-editable>Opening</div><h3 data-editable>Positioning cover</h3></div><div class="app-stack"><img src="./assets/icons/bolt.svg" alt=""></div></div>
+          <p data-editable>Lead with the new tagline, one-liner, and a visual brand surface that feels recognizably Sai.</p>
+          <span class="meta" data-editable>Use: title / section</span>
         </article>
         <article class="channel featured motion-in delay-2">
-          <div class="channel-head"><div><div class="meta" data-editable>Paid pilot</div><h3 data-editable>CRM + prospecting</h3></div><div class="app-stack"><img src="./assets/integrations/salesforce.svg" alt=""></div></div>
-          <p data-editable>Sales and investing teams feel the manual work immediately. This is the best placement for budget conversations.</p>
-          <span class="meta" data-editable>Proof: account brief</span>
+          <div class="channel-head"><div><div class="meta" data-editable>Proof</div><h3 data-editable>Computer worker loop</h3></div><div class="app-stack"><img src="./assets/integrations/salesforce.svg" alt=""></div></div>
+          <p data-editable>Show the before/after workflow, what Sai did, and the artifact or approval moment that proves progress.</p>
+          <span class="meta" data-editable>Use: product / sales</span>
         </article>
         <article class="channel motion-in delay-3">
-          <div class="channel-head"><div><div class="meta" data-editable>Daily habit</div><h3 data-editable>Inbox + calendar</h3></div><div class="app-stack"><img src="./assets/integrations/gmail.svg" alt=""></div></div>
-          <p data-editable>Strong retention surface once trust is earned. Keep first-run scope tight and visible.</p>
-          <span class="meta" data-editable>Proof: morning prep</span>
+          <div class="channel-head"><div><div class="meta" data-editable>Expansion</div><h3 data-editable>Recurring work</h3></div><div class="app-stack"><img src="./assets/integrations/gmail.svg" alt=""></div></div>
+          <p data-editable>Use the metrics and workspace slides to make 24/7 operation feel concrete, not abstract.</p>
+          <span class="meta" data-editable>Use: metrics / close</span>
         </article>
       </div>
     </div>
@@ -1495,8 +1772,8 @@
     <div class="top-mark"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Measurement</span></div>
     <div class="slide-content">
       <div class="slide-kicker motion-in" data-editable>North star</div>
-      <h2 class="motion-in delay-1" data-editable>Measure habit, not impressions.</h2>
-      <p class="motion-in delay-2" style="max-width: 44rem;" data-editable>A placement surface is working when it turns one-off tasks into recurring work.</p>
+      <h2 class="motion-in delay-1" data-editable>Make 24/7 work visible.</h2>
+      <p class="motion-in delay-2" style="max-width: 44rem;" data-editable>Use the metric slide to track the journey from task seen to task completed, approved, and repeated.</p>
       <div style="margin-top: clamp(1.2rem, 4vh, 2.5rem); max-width: 64rem;">
         <div class="metric-row motion-in delay-1"><span class="meta" data-editable>Surface view</span><div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div><span class="meta" data-editable>100%</span></div>
         <div class="metric-row motion-in delay-2"><span class="meta" data-editable>Task start</span><div class="bar-track"><div class="bar-fill" style="width: 72%;"></div></div><span class="meta" data-editable>72%</span></div>
@@ -1510,9 +1787,9 @@
     <div class="top-mark"><img src="./assets/sai-mark-green.svg" alt="Sai mark"><span data-editable>Next steps</span></div>
     <div class="slide-content">
       <div class="hero-copy">
-        <div class="slide-kicker motion-in" data-editable>14-day plan</div>
-        <h2 class="motion-in delay-1" data-editable>Package placement as a repeatable task loop.</h2>
-        <p class="motion-in delay-2" data-editable>Pick the CRM wedge, ship three starter tasks, instrument the recurrence loop, and turn every completed task into a shareable artifact.</p>
+        <div class="slide-kicker motion-in" data-editable>Closing</div>
+        <h2 class="motion-in delay-1" data-editable>Free from your computer.</h2>
+        <p class="motion-in delay-2" data-editable>Your 24/7 computer worker can carry the repetitive work, surface progress, and ask for approval when judgment matters.</p>
         <div class="cta motion-in delay-3">◆ Powered by Sai</div>
       </div>
       <div class="sai-window motion-in delay-2">
@@ -1530,15 +1807,31 @@
   </main>
 
   <script>
-    const STORAGE_KEY = "sai-placement-motion-editor-v3";
+    const STORAGE_KEY = "sai-master-template-free-from-computer-minimal-v2";
     const track = document.getElementById("deckTrack");
     const progress = document.querySelector(".progress");
     const editToggle = document.getElementById("editToggle");
+    const textToolsGroup = document.getElementById("textToolsGroup");
+    const textToolsToggle = document.getElementById("textToolsToggle");
+    const boldButton = document.getElementById("boldButton");
+    const italicButton = document.getElementById("italicButton");
+    const fontSelect = document.getElementById("fontSelect");
+    const fontSmaller = document.getElementById("fontSmaller");
+    const fontLarger = document.getElementById("fontLarger");
+    const textColor = document.getElementById("textColor");
+    const alignLeftButton = document.getElementById("alignLeftButton");
+    const alignCenterButton = document.getElementById("alignCenterButton");
+    const alignRightButton = document.getElementById("alignRightButton");
+    const textResetButton = document.getElementById("textResetButton");
     const imageButton = document.getElementById("imageButton");
     const mediaToggle = document.getElementById("mediaToggle");
+    const asciiButton = document.getElementById("asciiButton");
+    const asciiColor = document.getElementById("asciiColor");
+    const asciiWidth = document.getElementById("asciiWidth");
     const imageActionSelect = document.getElementById("imageActionSelect");
     const imageInput = document.getElementById("imageInput");
     const mediaInput = document.getElementById("mediaInput");
+    const asciiInput = document.getElementById("asciiInput");
     const mediaSidebar = document.getElementById("mediaSidebar");
     const mediaUpload = document.getElementById("mediaUpload");
     const mediaClose = document.getElementById("mediaClose");
@@ -1567,8 +1860,14 @@
     let selectedTextNode = null;
     let mediaItems = [...defaultMediaItems];
     const layerBoundNodes = new WeakSet();
+    const textInputBoundNodes = new WeakSet();
     const assetBoundNodes = new WeakSet();
     const imageFrameBoundNodes = new WeakSet();
+    const HISTORY_LIMIT = 100;
+    let undoStack = [];
+    let redoStack = [];
+    let historyTimer = null;
+    let restoringHistory = false;
 
     function refreshCollections() {
       document.querySelectorAll(".visual-3d").forEach((node) => node.remove());
@@ -1586,14 +1885,14 @@
         cursor.setAttribute("aria-label", "Editable cursor highlight");
       });
       const firstTop = track.querySelector(".slide:first-child .top-mark span[data-editable]");
-      if (firstTop?.textContent.trim() === "Sai placement") firstTop.textContent = "Sai master slides";
+      if (firstTop?.textContent.trim() === "Sai placement" || firstTop?.textContent.trim() === "Sai master slides") firstTop.textContent = "Sai";
       const firstKicker = track.querySelector(".slide:first-child .slide-kicker[data-editable]");
-      if (firstKicker?.textContent.trim() === "Placement strategy") firstKicker.textContent = "Sai master slides templates";
+      if (firstKicker?.textContent.trim() === "Placement strategy" || firstKicker?.textContent.trim() === "Sai master slides templates") firstKicker.textContent = "Master slide template";
       const firstTitle = track.querySelector(".slide:first-child h1[data-editable]");
-      if (firstTitle?.textContent.trim() === "Put Sai where work starts.") firstTitle.textContent = "Sai master slides templates.";
+      if (firstTitle?.textContent.trim() === "Put Sai where work starts." || firstTitle?.textContent.trim() === "Sai master slides templates.") firstTitle.textContent = "Free from your computer";
       const firstLede = track.querySelector(".slide:first-child .lede[data-editable]");
       if (firstLede?.textContent.trim().startsWith("Placement is not a distribution slot.")) {
-        firstLede.textContent = "A flexible editable deck system for Sai product stories, UI demos, brand assets, and motion-ready slide layouts.";
+        firstLede.textContent = "Your 24/7 computer worker";
       }
       const coverImage = track.querySelector(".slide:first-child .hero-art[data-image-frame] img");
       if (coverImage?.getAttribute("src") === "./assets/2049.svg") {
@@ -1606,7 +1905,13 @@
         node.dataset.editId = node.dataset.editId || `edit-${index}`;
         node.setAttribute("spellcheck", "true");
         node.setAttribute("contenteditable", document.body.classList.contains("editing") ? "true" : "false");
-        node.addEventListener("input", markDirty, { once: true });
+        if (!textInputBoundNodes.has(node)) {
+          textInputBoundNodes.add(node);
+          node.addEventListener("input", () => {
+            markDirty();
+            scheduleHistoryCommit();
+          });
+        }
         if (!layerBoundNodes.has(node)) {
           layerBoundNodes.add(node);
           node.addEventListener("pointerdown", () => selectLayer(node));
@@ -1630,6 +1935,63 @@
 
     function markDirty() {
       saveDeck.textContent = "Save*";
+      if (!restoringHistory) scheduleHistoryCommit();
+    }
+
+    function stateSnapshot() {
+      return JSON.stringify(collectState());
+    }
+
+    function commitHistory() {
+      if (restoringHistory || !track) return;
+      const snapshot = stateSnapshot();
+      if (undoStack[undoStack.length - 1] === snapshot) return;
+      undoStack.push(snapshot);
+      if (undoStack.length > HISTORY_LIMIT) undoStack.shift();
+      redoStack = [];
+    }
+
+    function scheduleHistoryCommit() {
+      window.clearTimeout(historyTimer);
+      historyTimer = window.setTimeout(commitHistory, 280);
+    }
+
+    function restoreSnapshot(snapshot) {
+      if (!snapshot) return;
+      restoringHistory = true;
+      try {
+        const state = JSON.parse(snapshot);
+        track.innerHTML = state.html || "";
+        transitionMode = state.transitionMode || "slide";
+        active = state.active || 0;
+        mediaItems = Array.isArray(state.mediaItems) ? state.mediaItems : [...defaultMediaItems];
+        selectedLayerNode = null;
+        selectedImageTarget = null;
+        selectedTextNode = null;
+        refreshCollections();
+        renderMediaLibrary();
+        setTransition(transitionMode);
+        goToSlide(active);
+        markDirty();
+      } finally {
+        restoringHistory = false;
+      }
+    }
+
+    function undoHistory() {
+      window.clearTimeout(historyTimer);
+      if (undoStack.length <= 1) return;
+      const current = undoStack.pop();
+      redoStack.push(current);
+      restoreSnapshot(undoStack[undoStack.length - 1]);
+    }
+
+    function redoHistory() {
+      window.clearTimeout(historyTimer);
+      const snapshot = redoStack.pop();
+      if (!snapshot) return;
+      undoStack.push(snapshot);
+      restoreSnapshot(snapshot);
     }
 
     function getLayerTarget(node) {
@@ -1660,6 +2022,7 @@
       selectedLayerNode = layerNode;
       getLayerTarget(layerNode).classList.add("layer-selected");
       if (layerNode.matches?.("[data-editable]")) selectedTextNode = layerNode;
+      updateRichToolbarState();
       if (layerNode.classList.contains("user-asset")) {
         selectedImageTarget = layerNode;
       } else if (selectedImageTarget) {
@@ -1764,6 +2127,23 @@
       if (!enabled) selectedTextNode = null;
       editToggle.classList.toggle("active", enabled);
       editToggle.textContent = enabled ? "Editing on" : "Edit text";
+      textToolsGroup.classList.toggle("open", enabled);
+      textToolsToggle.classList.toggle("active", enabled);
+      updateRichToolbarState();
+    }
+
+    function toggleTextTools() {
+      if (!document.body.classList.contains("editing")) {
+        setEditing(true);
+        return;
+      }
+      textToolsGroup.classList.add("open");
+      textToolsToggle.classList.add("active");
+    }
+
+    function closeTextTools(event) {
+      if (document.body.classList.contains("editing")) return;
+      if (!textToolsGroup.contains(event.target)) textToolsGroup.classList.remove("open");
     }
 
     function setTextMotion(kind) {
@@ -1778,6 +2158,113 @@
       selectedTextNode.style.animation = "";
       if (kind && kind !== "none") selectedTextNode.classList.add(`text-motion-${kind}`);
       markDirty();
+      commitHistory();
+    }
+
+    function currentTextTarget() {
+      const activeElement = document.activeElement;
+      if (activeElement?.isContentEditable) return activeElement;
+      if (selectedTextNode?.matches?.("[data-editable]")) return selectedTextNode;
+      return null;
+    }
+
+    function requireTextTarget() {
+      const target = currentTextTarget();
+      if (target) {
+        selectedTextNode = target;
+        return target;
+      }
+      saveDeck.textContent = "Pick text";
+      setTimeout(() => { saveDeck.textContent = "Save"; }, 1100);
+      return null;
+    }
+
+    function applyTextStyle(mutator) {
+      const target = requireTextTarget();
+      if (!target) return;
+      mutator(target);
+      markDirty();
+      commitHistory();
+      updateRichToolbarState();
+    }
+
+    function toggleBold() {
+      applyTextStyle((target) => {
+        const current = Number.parseInt(window.getComputedStyle(target).fontWeight, 10);
+        target.style.fontWeight = current >= 600 ? "" : "700";
+      });
+    }
+
+    function toggleItalic() {
+      applyTextStyle((target) => {
+        const current = window.getComputedStyle(target).fontStyle;
+        target.style.fontStyle = current === "italic" ? "" : "italic";
+      });
+    }
+
+    function setTextFont(fontFamily) {
+      if (!fontFamily) return;
+      applyTextStyle((target) => {
+        target.style.fontFamily = fontFamily;
+      });
+      fontSelect.value = "";
+    }
+
+    function stepFontSize(delta) {
+      applyTextStyle((target) => {
+        const current = Number.parseFloat(window.getComputedStyle(target).fontSize) || 16;
+        target.style.fontSize = `${Math.max(1, Math.round(current + delta))}px`;
+      });
+    }
+
+    function setTextColor(color) {
+      if (!color) return;
+      applyTextStyle((target) => {
+        target.style.color = color;
+      });
+    }
+
+    function setTextAlign(align) {
+      applyTextStyle((target) => {
+        target.style.textAlign = align;
+      });
+    }
+
+    function resetTextStyle() {
+      applyTextStyle((target) => {
+        target.style.fontWeight = "";
+        target.style.fontStyle = "";
+        target.style.fontFamily = "";
+        target.style.fontSize = "";
+        target.style.color = "";
+        target.style.textAlign = "";
+        target.classList.remove("text-motion-rise", "text-motion-type", "text-motion-step", "text-motion-pulse");
+      });
+    }
+
+    function colorToHex(value) {
+      const match = String(value || "").match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+      if (!match) return "#2b2d2f";
+      return `#${[match[1], match[2], match[3]].map((part) => Number(part).toString(16).padStart(2, "0")).join("")}`;
+    }
+
+    function updateRichToolbarState() {
+      const target = currentTextTarget();
+      if (!target) {
+        boldButton.classList.remove("active");
+        italicButton.classList.remove("active");
+        alignLeftButton.classList.remove("active");
+        alignCenterButton.classList.remove("active");
+        alignRightButton.classList.remove("active");
+        return;
+      }
+      const style = window.getComputedStyle(target);
+      boldButton.classList.toggle("active", Number.parseInt(style.fontWeight, 10) >= 600);
+      italicButton.classList.toggle("active", style.fontStyle === "italic");
+      textColor.value = colorToHex(style.color);
+      alignLeftButton.classList.toggle("active", style.textAlign === "left" || style.textAlign === "start");
+      alignCenterButton.classList.toggle("active", style.textAlign === "center");
+      alignRightButton.classList.toggle("active", style.textAlign === "right" || style.textAlign === "end");
     }
 
     function slideShell(inner, extraClass = "") {
@@ -1808,7 +2295,7 @@
         return slideShell(`${mark}<div class="slide-content"><div class="slide-kicker" data-editable>Comparison</div><h2 data-editable>Manual work vs. Sai loop.</h2><div class="compare-grid"><article class="compare-card"><div><div class="meta" data-editable>Before</div><h3 data-editable>Manual tab switching</h3></div><p data-editable>Work is scattered across CRM, inbox, calendar, and browser research.</p><span class="meta" data-editable>Signal: slow handoff</span></article><article class="compare-card dark"><div><div class="meta" data-editable>After</div><h3 data-editable>Sai completes the loop</h3></div><p data-editable>The coworker runs the workspace, logs each step, and asks for approval at the right moment.</p><span class="meta" data-editable>Signal: recurring task</span></article></div></div>`);
       }
       if (type === "quote") {
-        return slideShell(`${mark}<div class="slide-content"><div class="quote-marketing"><div class="slide-kicker" data-editable>Positioning</div><div class="quote-text" data-editable>Put the coworker where the work already happens.</div><p data-editable>Placement should make the next action obvious, observable, and repeatable.</p></div><figure class="user-asset" style="left:68%;top:14%;width:min(22vw,16rem);"><img src="./assets/ascii-art-face.png" alt="Sai ASCII face"><span class="resize-handle"></span></figure></div>`);
+        return slideShell(`${mark}<div class="slide-content"><div class="quote-marketing"><div class="slide-kicker" data-editable>Positioning</div><div class="quote-text" data-editable>Free from your computer.</div><p data-editable>Your 24/7 computer worker makes delegated work observable, repeatable, and easy to approve.</p></div><figure class="user-asset" style="left:68%;top:14%;width:min(22vw,16rem);"><img src="./assets/ascii-art-face.png" alt="Sai ASCII face"><span class="resize-handle"></span></figure></div>`);
       }
       if (type === "metrics") {
         return slideShell(`${mark}<div class="slide-content"><div class="slide-kicker" data-editable>Metrics</div><h2 data-editable>Track the task loop.</h2><p style="max-width:44rem" data-editable>Measure whether placement turns intent into completed, recurring work.</p><div style="margin-top: clamp(1.2rem, 4vh, 2.5rem); max-width: 64rem;"><div class="metric-row"><span class="meta" data-editable>Task seen</span><div class="bar-track"><div class="bar-fill" style="width: 92%;"></div></div><span class="meta" data-editable>92%</span></div><div class="metric-row"><span class="meta" data-editable>Task started</span><div class="bar-track"><div class="bar-fill" style="width: 68%;"></div></div><span class="meta" data-editable>68%</span></div><div class="metric-row"><span class="meta" data-editable>Approved</span><div class="bar-track"><div class="bar-fill" style="width: 54%;"></div></div><span class="meta" data-editable>54%</span></div><div class="metric-row"><span class="meta" data-editable>Recurring</span><div class="bar-track"><div class="bar-fill" style="width: 36%; background: var(--as);"></div></div><span class="meta" data-editable>36%</span></div></div></div>`);
@@ -1848,7 +2335,11 @@
       return `<img src="${src}" alt="${alt}">`;
     }
 
-    function addImage(dataUrl, target = selectedImageTarget, type = "image") {
+    function isAsciiMediaItem(item) {
+      return item?.name?.toLowerCase().includes("ascii") && String(item?.src || "").startsWith("data:image/svg");
+    }
+
+    function addImage(dataUrl, target = selectedImageTarget, type = "image", options = {}) {
       if (target?.matches?.("[data-image-frame]")) {
         target.innerHTML = mediaTag(dataUrl, type, "Imported image");
         selectImageTarget(target);
@@ -1858,22 +2349,93 @@
       if (target?.classList?.contains("user-asset")) {
         const handle = target.querySelector(".resize-handle")?.outerHTML || `<span class="resize-handle"></span>`;
         target.innerHTML = `${mediaTag(dataUrl, type, "Imported image")}${handle}`;
+        target.classList.toggle("ascii-asset", Boolean(options.ascii));
         selectImageTarget(target);
         markDirty();
         return;
       }
       const asset = document.createElement("div");
-      asset.className = "user-asset";
-      asset.style.left = "58%";
-      asset.style.top = "18%";
+      asset.className = `user-asset${options.ascii ? " ascii-asset" : ""}`;
+      asset.style.left = options.left || "58%";
+      asset.style.top = options.top || "18%";
+      if (options.width) asset.style.width = options.width;
       asset.innerHTML = `${mediaTag(dataUrl, type, "Imported image")}<span class="resize-handle"></span>`;
-      slides[active].appendChild(asset);
+      (options.slide || slides[active]).appendChild(asset);
       setEditing(true);
       attachAssetBehavior();
       attachImageFrameBehavior();
       selectLayer(asset);
       selectImageTarget(asset);
       markDirty();
+    }
+
+    function escapeSvgText(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    function svgToDataUrl(svg) {
+      return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+    }
+
+    function addAsciiAsset(dataUrl, name = "ascii-art.svg") {
+      mediaItems.unshift({ name, type: "image", src: dataUrl });
+      renderMediaLibrary();
+      addImage(dataUrl, null, "image", {
+        ascii: true,
+        left: "54%",
+        top: "16%",
+        width: "min(38vw, 32rem)",
+      });
+    }
+
+    function imageDataToAsciiSvg(imageDataUrl, options = {}) {
+      const chars = "@%#*+=-:. ";
+      const widthChars = Number(options.widthChars || 160);
+      const fg = options.fg || "#16D342";
+      const fontSize = Number(options.fontSize || 10);
+      const invert = Boolean(options.invert);
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => {
+          const heightChars = Math.max(1, Math.round(widthChars * (image.naturalHeight / image.naturalWidth) * 0.45));
+          const canvas = document.createElement("canvas");
+          canvas.width = widthChars;
+          canvas.height = heightChars;
+          const ctx = canvas.getContext("2d", { willReadFrequently: true });
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, widthChars, heightChars);
+          ctx.drawImage(image, 0, 0, widthChars, heightChars);
+          const data = ctx.getImageData(0, 0, widthChars, heightChars).data;
+          const palette = invert ? chars.split("").reverse().join("") : chars;
+          const lines = [];
+          for (let y = 0; y < heightChars; y += 1) {
+            let row = "";
+            for (let x = 0; x < widthChars; x += 1) {
+              const index = (y * widthChars + x) * 4;
+              const alpha = data[index + 3] / 255;
+              const brightness = alpha < 0.04 ? 255 : (data[index] * 0.299 + data[index + 1] * 0.587 + data[index + 2] * 0.114);
+              const charIndex = Math.min(palette.length - 1, Math.max(0, Math.round((255 - brightness) / 255 * (palette.length - 1))));
+              row += palette[charIndex];
+            }
+            lines.push(row.replace(/\s+$/g, ""));
+          }
+          const lineHeight = fontSize * 1.05;
+          const svgWidth = Math.ceil(widthChars * fontSize * 0.62);
+          const svgHeight = Math.ceil(heightChars * lineHeight);
+          const tspans = lines.map((line, index) => (
+            `<tspan x="0" y="${((index + 1) * lineHeight).toFixed(2)}">${escapeSvgText(line)}</tspan>`
+          )).join("");
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}">
+<text fill="${fg}" font-family="Menlo, Monaco, Consolas, monospace" font-size="${fontSize}" xml:space="preserve">${tspans}</text>
+</svg>`;
+          resolve(svg);
+        };
+        image.onerror = reject;
+        image.src = imageDataUrl;
+      });
     }
 
     function selectedImageElement() {
@@ -1959,7 +2521,7 @@
       }
       mediaGrid.innerHTML = mediaItems.map((item, index) => `
         <article class="media-card">
-          <button class="media-thumb" type="button" data-select="${index}" aria-label="Select ${item.name}">
+          <button class="media-thumb" type="button" draggable="true" data-select="${index}" data-drag-media="${index}" aria-label="Select ${item.name}">
             ${mediaTag(item.src, item.type, item.name)}
             <span class="media-kind">${item.type}</span>
           </button>
@@ -1970,7 +2532,13 @@
       mediaGrid.querySelectorAll("[data-select]").forEach((button) => {
         button.addEventListener("click", () => {
           const item = mediaItems[Number(button.dataset.select)];
-          if (item) addImage(item.src, selectedImageTarget, item.type);
+          if (item) addImage(item.src, selectedImageTarget, item.type, { ascii: isAsciiMediaItem(item) });
+        });
+      });
+      mediaGrid.querySelectorAll("[data-drag-media]").forEach((button) => {
+        button.addEventListener("dragstart", (event) => {
+          event.dataTransfer.setData("application/x-sai-media-index", button.dataset.dragMedia);
+          event.dataTransfer.effectAllowed = "copy";
         });
       });
       mediaGrid.querySelectorAll("[data-background]").forEach((button) => {
@@ -1981,22 +2549,70 @@
       });
     }
 
-    function addMediaFiles(files) {
-      Array.from(files || []).forEach((file) => {
+    function addMediaItem(item) {
+      if (!item?.src) return;
+      mediaItems = [item, ...mediaItems.filter((candidate) => candidate.src !== item.src)];
+      renderMediaLibrary();
+      mediaSidebar.classList.add("open");
+      mediaToggle.classList.add("active");
+      markDirty();
+    }
+
+    function addMediaFiles(files, options = {}) {
+      Array.from(files || []).forEach((file, fileIndex) => {
         if (!file.type.startsWith("image/") && !file.type.startsWith("video/")) return;
         const reader = new FileReader();
         reader.onload = () => {
-          mediaItems.unshift({
+          const item = {
             name: file.name,
             type: file.type.startsWith("video/") ? "video" : "image",
             src: reader.result,
-          });
-          renderMediaLibrary();
-          mediaSidebar.classList.add("open");
-          markDirty();
+          };
+          addMediaItem(item);
+          if (options.placeOnSlide !== false && fileIndex === 0) {
+            addImage(item.src, null, item.type, {
+              ascii: isAsciiMediaItem(item),
+              left: "54%",
+              top: "20%",
+              width: "min(34vw, 26rem)",
+            });
+            saveDeck.textContent = "Added";
+            setTimeout(() => { saveDeck.textContent = "Save*"; }, 900);
+          } else {
+            markDirty();
+          }
         };
         reader.readAsDataURL(file);
       });
+    }
+
+    function addMediaItemAtDrop(item, event) {
+      const slide = event.target.closest(".slide") || slides[active];
+      if (!item || !slide) return;
+      const rect = slide.getBoundingClientRect();
+      const defaultWidth = isAsciiMediaItem(item) ? Math.min(rect.width * 0.4, 520) : Math.min(rect.width * 0.34, 420);
+      const left = Math.max(16, Math.min(rect.width - defaultWidth - 16, event.clientX - rect.left - defaultWidth / 2));
+      const top = Math.max(16, Math.min(rect.height - 180, event.clientY - rect.top - 90));
+      addImage(item.src, null, item.type, {
+        ascii: isAsciiMediaItem(item),
+        slide,
+        left: `${left}px`,
+        top: `${top}px`,
+        width: `${defaultWidth}px`,
+      });
+      active = slides.indexOf(slide);
+      goToSlide(active);
+      mediaSidebar.classList.remove("open");
+    }
+
+    function handleMediaDrop(event) {
+      const index = event.dataTransfer?.getData("application/x-sai-media-index");
+      if (index === "") return false;
+      const item = mediaItems[Number(index)];
+      if (!item) return false;
+      event.preventDefault();
+      addMediaItemAtDrop(item, event);
+      return true;
     }
 
     function attachImageFrameBehavior() {
@@ -2056,6 +2672,7 @@
       cleanEditorMarkup(cleanTrack);
       return {
         html: cleanTrack.innerHTML,
+        slidesOffset: cleanTrack.outerHTML,
         active,
         transitionMode,
         mediaItems,
@@ -2064,7 +2681,9 @@
 
     function saveState() {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectState()));
+        const state = collectState();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        localStorage.setItem(`${STORAGE_KEY}:slides-offset`, state.slidesOffset);
         saveDeck.textContent = "Saved";
         setTimeout(() => { saveDeck.textContent = "Save"; }, 1100);
       } catch {
@@ -2076,7 +2695,7 @@
       saveState();
       const clone = document.documentElement.cloneNode(true);
       clone.querySelectorAll("[contenteditable]").forEach((node) => node.removeAttribute("contenteditable"));
-      clone.querySelectorAll(".edit-toolbar, .media-sidebar, #imageInput, #mediaInput").forEach((node) => node.remove());
+      clone.querySelectorAll(".edit-toolbar, .media-sidebar, #imageInput, #mediaInput, #asciiInput").forEach((node) => node.remove());
       cleanEditorMarkup(clone);
       clone.querySelector("body")?.classList.remove("editing");
       const html = `<!doctype html>\n${clone.outerHTML}`;
@@ -2090,12 +2709,29 @@
     }
 
     editToggle.addEventListener("click", () => setEditing(!document.body.classList.contains("editing")));
+    textToolsToggle.addEventListener("click", toggleTextTools);
+    document.addEventListener("pointerdown", closeTextTools);
+    boldButton.addEventListener("click", toggleBold);
+    italicButton.addEventListener("click", toggleItalic);
+    fontSelect.addEventListener("change", () => setTextFont(fontSelect.value));
+    fontSmaller.addEventListener("click", () => stepFontSize(-1));
+    fontLarger.addEventListener("click", () => stepFontSize(1));
+    textColor.addEventListener("input", () => setTextColor(textColor.value));
+    alignLeftButton.addEventListener("click", () => setTextAlign("left"));
+    alignCenterButton.addEventListener("click", () => setTextAlign("center"));
+    alignRightButton.addEventListener("click", () => setTextAlign("right"));
+    textResetButton.addEventListener("click", resetTextStyle);
     imageButton.addEventListener("click", () => imageInput.click());
+    asciiButton.addEventListener("click", () => asciiInput.click());
     mediaToggle.addEventListener("click", () => {
       mediaSidebar.classList.toggle("open");
+      mediaToggle.classList.toggle("active", mediaSidebar.classList.contains("open"));
       renderMediaLibrary();
     });
-    mediaClose.addEventListener("click", () => mediaSidebar.classList.remove("open"));
+    mediaClose.addEventListener("click", () => {
+      mediaSidebar.classList.remove("open");
+      mediaToggle.classList.remove("active");
+    });
     mediaUpload.addEventListener("click", () => mediaInput.click());
     imageActionSelect.addEventListener("change", () => {
       handleImageAction(imageActionSelect.value);
@@ -2106,12 +2742,43 @@
       const file = imageInput.files?.[0];
       if (!file) return;
       const reader = new FileReader();
-      reader.onload = () => addImage(reader.result, selectedImageTarget, file.type.startsWith("video/") ? "video" : "image");
+      reader.onload = () => {
+        const item = {
+          name: file.name,
+          type: file.type.startsWith("video/") ? "video" : "image",
+          src: reader.result,
+        };
+        addMediaItem(item);
+        addImage(item.src, selectedImageTarget, item.type);
+        saveDeck.textContent = "Added";
+        setTimeout(() => { saveDeck.textContent = "Save*"; }, 900);
+      };
       reader.readAsDataURL(file);
       imageInput.value = "";
     });
+    asciiInput.addEventListener("change", () => {
+      const file = asciiInput.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async () => {
+        try {
+          saveDeck.textContent = "ASCII...";
+          const svg = await imageDataToAsciiSvg(reader.result, {
+            widthChars: Number(asciiWidth.value || 160),
+            fg: asciiColor.value || "#16D342",
+          });
+          addAsciiAsset(svgToDataUrl(svg), file.name.replace(/\.[^.]+$/, "") + "-ascii.svg");
+          saveDeck.textContent = "Save*";
+        } catch {
+          saveDeck.textContent = "ASCII failed";
+          setTimeout(() => { saveDeck.textContent = "Save"; }, 1300);
+        }
+      };
+      reader.readAsDataURL(file);
+      asciiInput.value = "";
+    });
     mediaInput.addEventListener("change", () => {
-      addMediaFiles(mediaInput.files);
+      addMediaFiles(mediaInput.files, { placeOnSlide: false });
       mediaInput.value = "";
     });
     mediaDrop.addEventListener("dragover", (event) => {
@@ -2125,9 +2792,13 @@
       addMediaFiles(event.dataTransfer.files);
     });
     document.addEventListener("dragover", (event) => {
-      if (event.dataTransfer?.types?.includes("Files")) event.preventDefault();
+      if (event.dataTransfer?.types?.includes("Files") || event.dataTransfer?.types?.includes("application/x-sai-media-index")) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "copy";
+      }
     });
     document.addEventListener("drop", (event) => {
+      if (handleMediaDrop(event)) return;
       if (!event.dataTransfer?.files?.length || mediaSidebar.contains(event.target)) return;
       event.preventDefault();
       addMediaFiles(event.dataTransfer.files);
@@ -2150,6 +2821,36 @@
     exportDeck.addEventListener("click", exportHtml);
 
     window.addEventListener("keydown", (event) => {
+      const isMod = (event.metaKey || event.ctrlKey) && !event.altKey;
+      const key = event.key.toLowerCase();
+      if (isMod && key === "s") {
+        event.preventDefault();
+        window.clearTimeout(historyTimer);
+        commitHistory();
+        saveState();
+        return;
+      }
+      if (isMod && key === "z") {
+        event.preventDefault();
+        if (event.shiftKey) redoHistory();
+        else undoHistory();
+        return;
+      }
+      if (isMod && key === "y") {
+        event.preventDefault();
+        redoHistory();
+        return;
+      }
+      if (isMod && key === "b") {
+        event.preventDefault();
+        toggleBold();
+        return;
+      }
+      if (isMod && key === "i") {
+        event.preventDefault();
+        toggleItalic();
+        return;
+      }
       const layerShortcut = event.metaKey && !event.ctrlKey && !event.altKey && ["BracketRight", "BracketLeft"].includes(event.code);
       if (layerShortcut) {
         event.preventDefault();
@@ -2185,6 +2886,7 @@
     setTransition(transitionMode);
     const initial = Number.parseInt((location.hash || `#s${active + 1}`).replace("#s", ""), 10);
     goToSlide(Number.isFinite(initial) ? initial - 1 : active, false);
+    commitHistory();
   </script>
 </body>
 </html>
