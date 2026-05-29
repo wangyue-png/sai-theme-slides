@@ -3,3 +3,5 @@
 node_modules/
 dist/
 tmp/
+template/simular-sai-creator-collab.html
+template/assets/creator-collab/
